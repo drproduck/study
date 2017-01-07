@@ -1,0 +1,14 @@
+martial art principle: use constraints to avoid getting further
+
+domain reduction alg
+
+for each dfs assignment
+    for each variable vi considered
+        for each xi in Di
+	    for each constraint c(xi, xj) where xj in Dj
+		if not exist xj in c(xi, xj) satified
+		    remove xi from Di
+		if empty then backup
+use most constrained first
+propagate through domain produced to a single algorithm
+converge to best domain size

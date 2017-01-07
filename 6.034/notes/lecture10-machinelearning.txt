@@ -1,0 +1,16 @@
+2 kinds of learning:
+
+regularity (bulldozer)
+    nearest neighbor - pattern recognition
+    neural nets (mimic biology)
+    boosting (theory)
+
+contraints (human like)
+    one shot - learning one definite thing per experience
+    explaination based learning
+
+this lecture is nearest neighbor based learning
+
+big ideas: 
+the precedent principle: if something is similar to some respect then likely to be similar in other respect
+no cake without flours: 
