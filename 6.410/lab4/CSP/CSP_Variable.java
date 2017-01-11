@@ -1,4 +1,4 @@
-package csp;
+
 
 /**
  * Title:        CSP_Variable
@@ -187,15 +187,37 @@ public class CSP_Variable
 	 */   
     public Object select_from_domain_values_copy_fc(List<CSP_Variable> vars,int i)
     {
-		return null;
+			Object currentVal = domain.domainVersions.get(i).remove(0);
+			assign(currentVal);
+			if (consistentWithFC(i)) {
+				return currentVal;
+			}
+			else return null;
 	}
-    
+
+	/**
+	 * Check consistency of unassigned domain values with this assigned variable,
+	 * considering only arc directed towards this variable
+	 * if true, unassigned variables' domains will be pruned.
+	 * if false, restore domain of unassigned variables.
+	 * @return true iff variable's domain values are consistent
+	 */
+	public boolean consistentWithFC(int i) {
+		ListIterator<CSP_Constraint> from_arc_iterator = from_arcs.listIterator();
+		while (from_arc_iterator.hasNext()) {
+			CSP_Constraint to_arc = from_arc_iterator.next();
+			if (!to_arc.consistentWithPruning()) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	/**
 	 * Method checks the consistency of the domain values of variable against
 	 * all constraints involving variable. Returns <code>True</code> iff
 	 * consistent.
-	 * 
+	 *
 	 * @return <code>True</code> iff variable's domain values are consistent
 	 *         against the local constraints.
 	 */

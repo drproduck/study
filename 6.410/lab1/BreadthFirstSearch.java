@@ -1,6 +1,3 @@
-package team16410;
-
-
 /**
  * This class implements breadth-first search by extending the
  * generalized uninformed search.
@@ -27,5 +24,8 @@ public class BreadthFirstSearch extends UninformedSearch
 	protected void addToQueue(Set<Node> reachableNodes)
 	{
 		//*** You fill in here! ***//
+		for (Node N : reachableNodes) {
+			m_Q.addLast(N);
+		}
 	}
 }

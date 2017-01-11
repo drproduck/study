@@ -1,4 +1,3 @@
-package team16410;
 
 /**
  * This class must conform to the regulations imposed by the Battlecode

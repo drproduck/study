@@ -1,4 +1,4 @@
-package csp;
+
 
 /**
  * Title:        CSP_rep
@@ -11,7 +11,7 @@ package csp;
  * @version 2.0
  */
 
-import java.util.*;
+import java.util.List;
 
 /*
 The class CSP_rep specifies a CSP, where a CSP is represented by 
@@ -86,8 +86,10 @@ public class CSP_rep
 	  */
     public void print()
     {
+		for (CSP_Variable v : variables) {
 
-    }
+		}
+	}
 
 
 	 /**
@@ -104,7 +106,26 @@ public class CSP_rep
 	  */
     public boolean backtrack()
     {
-    	return true;
+		int i = 0;
+		variables.get(i).copy_domain_values();
+		variables.get(i).create_iterator_for_domain_values_copy();
+		for (;i>-1&&i<variables.size();) {
+			if (variables.get(i).select_from_domain_values_copy() == null) {
+				variables.get(i).restore_domain_values_from_copy();
+				i--;
+			} else {
+				if (i == variables.size()-1) {
+					break;
+				}
+				i++;
+				variables.get(i).copy_domain_values();
+				variables.get(i).create_iterator_for_domain_values_copy();
+			}
+		}
+		if (i == -1) {
+			return false;
+		}
+		else return true;
     }
 
 	 /**
@@ -128,6 +149,41 @@ public class CSP_rep
 	  */
     public boolean backtrack_fc()
     {
-    	return true;
+		initializeDomainCache();
+		int i = 0;
+    	variables.get(i).copy_domain_values();
+		initializeDomainVersions(i);
+		while (i > -1 && i < variables.size()) {
+			if (variables.get(i).select_from_domain_values_copy_fc(variables, i) == null) {
+				i--;
+			} else {
+				i++;
+				initializeDomainVersions(i);
+			}
+		}
+		if (i < 0) {
+			return false;
+		}
+		return true;
     }
+
+	/**
+	 * create new version at the ith level for each variable
+	 * @param i the level number
+	 */
+	public void initializeDomainVersions(int i) {
+		for (CSP_Variable var :
+				variables) {
+			var.domain.initializeDomainVersions(i);
+		}
+	}
+
+	/**save initial domains to cache via copy_domain_values
+	 *
+	 */
+	public void initializeDomainCache() {
+		for (CSP_Variable var : variables) {
+			var.copy_domain_values();
+		}
+	}
 }

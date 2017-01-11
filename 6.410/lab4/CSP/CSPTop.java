@@ -1,4 +1,4 @@
-package csp;
+
 
 /**
  * Title:        CSPTop
@@ -23,7 +23,7 @@ public class CSPTop {
 	 */
     public CSPTop()
     {
-	current_csp = new NQueens(21);   // BT search gets rough after 21 queens.
+	current_csp = new NQueens(5);   // BT search gets rough after 21 queens.
 	current_csp.initialize();
     }
 

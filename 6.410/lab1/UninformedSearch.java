@@ -1,4 +1,4 @@
-package team16410;
+
 
 /**
  * An abstract class for uninformed search. It provides all methods
@@ -16,6 +16,8 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Set;
+
+import static javafx.scene.input.KeyCode.V;
 
 public abstract class UninformedSearch
 {
@@ -156,6 +158,11 @@ public abstract class UninformedSearch
      */
     public void initializeSearch(State S){
 	//*** You fill in here! ***//
+        m_visitedVertices = new HashSet<>();
+        m_Q = new LinkedList<>();
+        m_Q.add(new Node(S));
+        m_visitedVertices.add(S);
+        m_maximumQueueSize = 1;
     }
 	
     /**
@@ -185,10 +192,14 @@ public abstract class UninformedSearch
     {
 	// Set of new nodes reachable from node
 	Set<Node> extendedPaths = new LinkedHashSet<Node>();
-
 	//*** You fill in here! ***//
-
-	return extendedPaths;
+        for (Action action : node.getState().actionsAvailable()) {
+            if (isVisitedListUsed() && m_visitedVertices.contains(action.getPost())) {
+                continue;
+            }
+            extendedPaths.add(new Node(action.getPost(), node, action));
+        }
+        return extendedPaths;
     }
 	
     /**
@@ -263,8 +274,8 @@ public abstract class UninformedSearch
 	    //  Pop some partial path N from Q
 	    //=========================================================
 	    //*** You fill in here! ***//
-			
-	    if (N.getState().equals(G)){		    
+        Node N = m_Q.pop();
+        if (N.getState().equals(G)){
 		return listify(N);
 	    }
 			
@@ -275,7 +286,6 @@ public abstract class UninformedSearch
 		    
 		// [Modification] If extension of path N is allowed,
 		if (isExtensionAllowed(N)){
-			    
 		   							
 		    //=================================================
 		    //     Find all children of N not in Visited
@@ -284,7 +294,11 @@ public abstract class UninformedSearch
 		    //     queue with the new leaves
 		    //=================================================
 		    //*** You fill in here! ***//
-	
+            setUseVisitedList(true);
+            m_visitedVertices.add(N.getState());
+            Set extendedPaths = getExtendedPaths(N);
+            addToQueue(extendedPaths);
+            m_extendedPathsCount += extendedPaths.size();
 		   
 					
 		    // Update the number of maximum queue size reached
