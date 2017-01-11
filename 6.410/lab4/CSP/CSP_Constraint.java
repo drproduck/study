@@ -1,5 +1,3 @@
-package csp;
-
 /**
  * Title:        CSP_Constraint
  * Description:  An abstract class denoting a binary, finite
@@ -54,4 +52,5 @@ public class CSP_Constraint
     {
 	return true;
     }
+    public boolean consistentWithPruning(){return true;}
 }

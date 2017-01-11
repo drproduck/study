@@ -1,4 +1,4 @@
-package csp;
+
 
 /**
  * Title:        CSP_Domain
@@ -11,7 +11,9 @@ package csp;
  * @version 2.0
  */
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 
 public class CSP_Domain
 {
@@ -21,6 +23,7 @@ public class CSP_Domain
     List<Object> domain_values = null;
     List<Object> domain_values_copy = null;
     ListIterator<Object> copied_domain_values_iterator = null;
+	List<List> domainVersions = new ArrayList<>();
 
 	/**
 	 * Default constructor.  Does nothing.
@@ -40,7 +43,8 @@ public class CSP_Domain
 	return domain_values;
     }
     
-    
+    public List<List> getDomainVersions() {
+		return domainVersions;}
 	/**
 	 * Method creates a copy of domain values.
 	 * Used by recursive BT only.
@@ -49,7 +53,16 @@ public class CSP_Domain
     {
 	domain_values_copy = domain_values;
     }
-    
+
+	public void initializeDomainVersions(int i) {
+		List version = new ArrayList();
+		if (i > 0) {
+			version.addAll(domainVersions.get(i-1));
+		} else if (i == 0) {
+			version.addAll(domain_values_copy);
+		}
+		domainVersions.add(i, version);
+	}
 
 	/**
 	 * Method restores domain values from copy.

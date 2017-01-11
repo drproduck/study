@@ -1,6 +1,3 @@
-package team16410;
-
-
 /**
  * A node encapsulates a vertex in the search tree.  To maintain the tree
  * structure, each node maintains a pointer to its parent.

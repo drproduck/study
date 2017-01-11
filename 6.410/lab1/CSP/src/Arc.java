@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
+import java.util.Set;
 
 /**
  * Created by Khiem on 1/9/2017.
@@ -10,6 +10,8 @@ public class Arc {
         return ourInstance;
     }
 
+    private Set<Constraint> constraints;
     private Arc() {
+
     }
 }

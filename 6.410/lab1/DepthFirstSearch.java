@@ -1,4 +1,3 @@
-package team16410;
 /**
  * This class implements depth-first search by extending the
  * generalized uninformed search.
@@ -6,7 +5,7 @@ package team16410;
  * @author		Seung Chung
  */
 //import java.util.Deque;
-import java.util.LinkedList;
+
 import java.util.Set;
 
 public class DepthFirstSearch extends UninformedSearch
@@ -27,5 +26,9 @@ public class DepthFirstSearch extends UninformedSearch
 	protected void addToQueue(Set<Node> reachableNodes)
 	{
 	    //*** You fill in here ***//
+		for (Node N : reachableNodes) {
+			m_Q.addFirst(N);
+		}
 	}
 }
+s

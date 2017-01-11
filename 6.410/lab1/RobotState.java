@@ -1,4 +1,4 @@
-package team16410;
+
 
 import java.util.Set;
 import battlecode.common.*;

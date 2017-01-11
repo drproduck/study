@@ -1,4 +1,4 @@
-package csp;
+
 
 /**
  * Title:        NQueensVariable
