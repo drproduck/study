@@ -1,3 +1,4 @@
+package segmenttree;
 /**
  * Created by Khiem on 10/14/2016.
  */

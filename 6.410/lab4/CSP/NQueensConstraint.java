@@ -54,8 +54,8 @@ public class NQueensConstraint extends CSP_Constraint {
 			System.out.println("In NQueensConstraint consistent, input_col = " + input_col + " output_col = " + output_col);
 
 		// Get the remaining allowed row values for the two queens.
-		List input_domain_values = input_var.get_domain_values();
-		List output_domain_values = output_var.get_domain_values();
+		List input_domain_values = input_var.getDomainValues();
+		List output_domain_values = output_var.getDomainValues();
 
 		if (debug_print)
 			System.out.println("input_values = " + input_domain_values + " output_values = " + output_domain_values);
@@ -100,15 +100,15 @@ public class NQueensConstraint extends CSP_Constraint {
 		return false;
 	}
 
-	public boolean consistentWithPruning() {
-		NQueensVariable input_var = (NQueensVariable) input_variable;
+	public boolean prune() {
+		NQueensVariable inputVar = (NQueensVariable) input_variable;
 		NQueensVariable output_var = (NQueensVariable) output_variable;
-		int input_col = input_var.col;
+		int input_col = inputVar.col;
 		int output_col = output_var.col;
 		if (debug_print)
 			System.out.println("In NQueensConstraint consistent, input_col = " + input_col + " output_col = " + output_col);
-		List input_domain_values = input_var.get_domain_values();
-		List output_domain_values = output_var.get_domain_values();
+		List input_domain_values = inputVar.getDomainValues();
+		List output_domain_values = output_var.getDomainValues();
 
 		if (debug_print)
 			System.out.println("input_values = " + input_domain_values + " output_values = " + output_domain_values);

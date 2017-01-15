@@ -27,10 +27,10 @@ public class NQueensDomain extends CSP_Domain {
      */
     public NQueensDomain(int size) {
         //super();
-        domain_values = new ArrayList<Object>();
+        domainValues = new ArrayList<Object>();
 
         for (int row = 0; row < size; row++) {
-            domain_values.add(new Integer(row));
+            domainValues.add(new Integer(row));
         }
 
     }
