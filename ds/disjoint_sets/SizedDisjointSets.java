@@ -1,7 +1,7 @@
 package disjoint_sets;
 
 /**
- * union by size implementation of disjoint sets data structure.
+ * A simple union-by-size implementation of disjoint sets data structure.
  * array index represents the name of node
  * negative array content: the node is a parent, its absolute value the size of the subtree
  * positive array content: the parent of this node
@@ -11,9 +11,8 @@ package disjoint_sets;
 public class SizedDisjointSets extends DisjointSets {
     public SizedDisjointSets(int numElements) {
         super(numElements);
-        for (int a :
-                parents) {
-            
+        for (int i = 0; i < numElements; i++) {
+            parents[i]  = -1;
         }
     }
 
@@ -33,7 +32,10 @@ public class SizedDisjointSets extends DisjointSets {
     }
         
     public int find( int x){
-        if ()
+        if (parents[x] < 0) {
+            return x;
+        }
+        return find(parents[x]);
     }
     
 }
