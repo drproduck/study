@@ -1,7 +1,7 @@
 
 
 /**
- * Title:        CSP_rep
+ * Title:        CSPRep
  * Description:  An abstract class, denoting a finite domain
  *               constraint satisfaction problem.  Define a 
  *               subclass to represent a specific kind of CSP.
@@ -14,41 +14,41 @@
 import java.util.List;
 
 /*
-The class CSP_rep specifies a CSP, where a CSP is represented by 
+The class CSPRep specifies a CSP, where a CSP is represented by
 a set of variables, a finite domain, denoting the domain of values, 
 shared by every variable, and a set of constraints.  Constraints are
-restricted to binary constraints in the implementation.  The CSP_rep 
+restricted to binary constraints in the implementation.  The CSPRep
 class includes the elements variables, domain, and constraints.  
 
-CSP_rep also includes constructor, initialize, and print methods, 
-which must be overridden in a class that inherits from CSP_rep.  
+CSPRep also includes constructor, initialize, and print methods,
+which must be overridden in a class that inherits from CSPRep.
 
 Finally, the class has methods backtrack, and backtrack_fc.  
 You will implement the method backtrack in problem 8.1, and the 
 method backtrack_fc in problem 8.2.  Note that these methods are 
 to be implemented at the level of the CSP abstraction, in terms 
-of the classes CSP_rep, CSP_Variable, CSP_Domain, and 
-CSP_Constraint.  The implementation of these methods should not 
+of the classes CSPRep, CSPVariable, CSPDomain, and
+CSPConstraint.  The implementation of these methods should not
 contain code specific to a particular type of CSP, such as N-queens.
 */
 
-public class CSP_rep
+public class CSPRep
 {
 	/**
 	 * A finite list of the variables of the CSP.
 	 */
-    List<CSP_Variable> variables;
+    List<CSPVariable> variables;
     
 	/**
 	 * A finite domain of values that all variables of the CSP range over.
 	 */
-    CSP_Domain domain;
+    CSPDomain domain;
 
     /**
 	 * A finite list of the binary constraints of the CSP.  
 	 * Each constraint ranges over a pair of variables in VARIABLES. 
 	 */
-	 List<CSP_Constraint> constraints;
+	 List<CSPConstraint> constraints;
 
 
 	 /**
@@ -62,7 +62,7 @@ public class CSP_rep
 	 /**
 	  * Default constructor.  Does nothing.
 	  */
-	 public CSP_rep()
+	 public CSPRep()
     {
 
     }
@@ -86,7 +86,7 @@ public class CSP_rep
 	  */
     public void print()
     {
-		for (CSP_Variable v : variables) {
+		for (CSPVariable v : variables) {
 
 		}
 	}
@@ -106,8 +106,12 @@ public class CSP_rep
 	  */
     public boolean backtrack()
     {
+		for (CSPVariable var :
+				variables) {
+			var.initializeDomainValueIterator();
+		}
 		int i = 0;
-		variables.get(i).domainValuesIterator();
+		variables.get(i).copyDomainValues();
 		for (;i>-1&&i<variables.size();) {
 			if (variables.get(i).select() == null) {
 				variables.get(i).restoreDomainValues();
@@ -118,7 +122,6 @@ public class CSP_rep
 				}
 				i++;
 				variables.get(i).copyDomainValues();
-				variables.get(i).domainValuesIterator();
 			}
 		}
 		if (i == -1) {
@@ -148,9 +151,7 @@ public class CSP_rep
 	  */
     public boolean backtrack_fc()
     {
-		initializeDomainCache();
 		int i = 0;
-    	variables.get(i).copyDomainValues();
 		initializeDomainVersions(i);
 		while (i > -1 && i < variables.size()) {
 			if (variables.get(i).selectFC(variables, i) == null) {
@@ -171,7 +172,7 @@ public class CSP_rep
 	 * @param i the level number
 	 */
 	public void initializeDomainVersions(int i) {
-		for (CSP_Variable var :
+		for (CSPVariable var :
 				variables) {
 			var.domain.initializeDomainVersions(i);
 		}

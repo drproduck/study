@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class NQueens extends CSP_rep
+public class NQueens extends CSPRep
 {
     
 	/**
@@ -66,9 +66,9 @@ public class NQueens extends CSP_rep
     // Generate SIZE variables, with corresponding domains.  
     // All variables have the same domain values,
     // (0, ... SIZE-1)
-    variables = new ArrayList<CSP_Variable>();
+    variables = new ArrayList<CSPVariable>();
     domain = new NQueensDomain(size);
-    constraints = new ArrayList<CSP_Constraint>();
+    constraints = new ArrayList<CSPConstraint>();
 
     for (int col=0; col<size; col++) {
     	NQueensDomain var_domain = new NQueensDomain(size);

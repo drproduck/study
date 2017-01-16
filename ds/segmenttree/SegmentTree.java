@@ -58,5 +58,6 @@ public class SegmentTree {
         int[] a = {18, 17, 13, 19, 15, 11, 20};
         SegmentTree st  = new SegmentTree(a);
         System.out.println(st.rmq(4,6));
+
     }
 }
