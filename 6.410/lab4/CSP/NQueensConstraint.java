@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 
-public class NQueensConstraint extends CSP_Constraint {
+public class NQueensConstraint extends CSPConstraint {
 	/**
 	 * Boolean flag, which is <code>True</code> iff
 	 * debugging information is printed for constraint.
@@ -42,8 +42,8 @@ public class NQueensConstraint extends CSP_Constraint {
 	public boolean consistent() {
 		// Get the two queens whose attack is represented by
 		// this constraint
-		NQueensVariable input_var = (NQueensVariable) input_variable;
-		NQueensVariable output_var = (NQueensVariable) output_variable;
+		NQueensVariable input_var = (NQueensVariable) input;
+		NQueensVariable output_var = (NQueensVariable) output;
 
 		// Get the columns that the two queens reside on.
 		int input_col = input_var.col;
@@ -100,39 +100,39 @@ public class NQueensConstraint extends CSP_Constraint {
 		return false;
 	}
 
-	public boolean prune() {
-		NQueensVariable inputVar = (NQueensVariable) input_variable;
-		NQueensVariable output_var = (NQueensVariable) output_variable;
-		int input_col = inputVar.col;
-		int output_col = output_var.col;
+	public boolean prune(int version) {
+		NQueensVariable inputVar = (NQueensVariable) input;
+		NQueensVariable outputVar = (NQueensVariable) output;
+		int inputCol = inputVar.col;
+		int outputCol = outputVar.col;
 		if (debug_print)
-			System.out.println("In NQueensConstraint consistent, input_col = " + input_col + " output_col = " + output_col);
-		List input_domain_values = inputVar.getDomainValues();
-		List output_domain_values = output_var.getDomainValues();
+			System.out.println("In NQueensConstraint consistent, inputCol = " + inputCol + " outputCol = " + outputCol);
+		List inputDomainValues = inputVar.getDomainVersion(version);
+		List outputDomainValues = outputVar.getDomainVersion(version);
 
 		if (debug_print)
-			System.out.println("input_values = " + input_domain_values + " output_values = " + output_domain_values);
+			System.out.println("input_values = " + inputDomainValues + " output_values = " + outputDomainValues);
 
-		ListIterator output_iterator = output_domain_values.listIterator();
-		while (output_iterator.hasNext()) {
-			Integer output_domain_value = (Integer) output_iterator.next();
+		ListIterator outputIterator = outputDomainValues.listIterator();
+		while (outputIterator.hasNext()) {
+			Integer outputDomainValue = (Integer) outputIterator.next();
 
-			ListIterator input_iterator = input_domain_values.listIterator();
-			while (input_iterator.hasNext()) {
-				Integer input_domain_value = (Integer) input_iterator.next();
+			ListIterator inputIterator = inputDomainValues.listIterator();
+			while (inputIterator.hasNext()) {
+				Integer inputDomainValue = (Integer) inputIterator.next();
 
-				int input_row = input_domain_value.intValue();
-				int output_row = output_domain_value.intValue();
+				int inputRow = inputDomainValue.intValue();
+				int outputRow = outputDomainValue.intValue();
 				if (debug_print)
-					System.out.println("input_row = " + input_row + " output_row = " + output_row);
+					System.out.println("inputRow = " + inputRow + " outputRow = " + outputRow);
 
-				if ((input_row == output_row) ||
-						(Math.abs(input_col - output_col) == Math.abs(input_row - output_row))) {
+				if ((inputRow == outputRow) ||
+						(Math.abs(inputCol - outputCol) == Math.abs(inputRow - outputRow))) {
 					// The current row assignments work, return consistent.
-					input_iterator.remove();
+					inputIterator.remove();
 				}
 			}
-			if (input_domain_values.size() == 0) {
+			if (inputDomainValues.size() == 0) {
 				return false;
 			}
 		}

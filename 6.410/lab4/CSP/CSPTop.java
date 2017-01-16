@@ -16,7 +16,7 @@ public class CSPTop {
 	/**
 	 * An instance denoting the CSP to be solved.
 	 */
-    static CSP_rep current_csp = null;
+    static CSPRep current_csp = null;
 
 	/**
 	 * Default construct, creates and intializes a 4 Queens CSP.

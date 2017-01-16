@@ -15,7 +15,7 @@
 
 import java.util.*;
 
-public class NQueensDomain extends CSP_Domain {
+public class NQueensDomain extends CSPDomain {
 
     /**
      * Constructor for NQueensDomain.  Creates a domain

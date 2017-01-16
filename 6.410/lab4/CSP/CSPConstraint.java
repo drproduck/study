@@ -1,5 +1,5 @@
 /**
- * Title:        CSP_Constraint
+ * Title:        CSPConstraint
  * Description:  An abstract class denoting a binary, finite
  *               domain constraint.  Define subclass to represent 
  *               a specific kind of CSP constraint.
@@ -9,15 +9,15 @@
  * @version 2.0
  */
 
-public class CSP_Constraint
+public class CSPConstraint
 {
 	/**
 	 * This binary constraint goes from input_variable to output_variable.
 	 * Note that this directionality is artificial, these are simply
 	 * two distinct variables.
 	 */
-    CSP_Variable input = null;
-    CSP_Variable output = null;
+    CSPVariable input = null;
+    CSPVariable output = null;
     
 	/**
 	 * Default constructor for a constraint between input and
@@ -26,7 +26,7 @@ public class CSP_Constraint
 	 * @param input		The input CSP variable of constraint.
 	 * @param output	The output CSP variable of constraint.
 	 * 	 */
-    public CSP_Constraint(CSP_Variable input, CSP_Variable output)
+    public CSPConstraint(CSPVariable input, CSPVariable output)
     {
 	input = input;
 	output = output;
@@ -34,8 +34,8 @@ public class CSP_Constraint
 	// Associate constraint with its input and output
 	// variables.
 
-	input.to_arcs.add(this);
-	output.from_arcs.add(this);
+	input.toArcs.add(this);
+	output.fromArcs.add(this);
     }
 
 	/**
@@ -52,5 +52,5 @@ public class CSP_Constraint
     {
 	return true;
     }
-    public boolean consistentWithPruning(){return true;}
+    public boolean prune(int version){return true;}
 }
