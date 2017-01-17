@@ -1,5 +1,3 @@
-
-
 /**
  * Title:        CSPTop
  * Description:  Top-level class for solving a CSP.
@@ -23,7 +21,7 @@ public class CSPTop {
 	 */
     public CSPTop()
     {
-	current_csp = new NQueens(5);   // BT search gets rough after 21 queens.
+	current_csp = new NQueens(30);   // BT search gets rough after 21 queens.
 	current_csp.initialize();
     }
 
@@ -34,7 +32,8 @@ public class CSPTop {
     {
 	new CSPTop();
 	//current_csp.print();
-
+/**
+		long start = System.nanoTime();
 	System.out.println("\nSolving CSP using backtrack search, please wait.");
 	// Solve the CSP
 	boolean solve_res = current_csp.backtrack();
@@ -45,12 +44,15 @@ public class CSPTop {
 	System.out.println("Solution:");
 
 	current_csp.print();
-	
+		long stop = System.nanoTime();
+		System.out.println("\nTime to solve = "+(stop - start));
+*/
+	long	start = System.nanoTime();
 	System.out.println("\nSolving CSP using backtrack search with forward checking, please wait.");
 
 	// Solve the CSP
 	current_csp.initialize();
-	solve_res = current_csp.backtrack_fc();
+	boolean solve_res = current_csp.backtrack_fc();
 
 	// Print whether consistent, and if consistent the
 	// satisfying assignment.
@@ -58,7 +60,9 @@ public class CSPTop {
 	System.out.println("Solution:");
 
 	current_csp.print();
-    }
+	long	stop = System.nanoTime();
+		System.out.println("\nTime to sovle = "+(stop - start));
+	}
 }
 
 

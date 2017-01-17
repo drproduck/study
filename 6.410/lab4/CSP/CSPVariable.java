@@ -22,11 +22,6 @@ public class CSPVariable {
      * ranges over.
      */
     CSPDomain domain = null;
-
-    /**
-     * domain versions for forward checking
-     */
-    List<CSPDomain> domainVersion = null;
     /**
      * A list of all contraints that include this variable as its
      * input variable.
@@ -44,15 +39,6 @@ public class CSPVariable {
      */
     boolean debug_print = false;
 
-
-    /**
-     * Default constructor.  Does nothing.
-     */
-    public CSPVariable() {
-
-    }
-
-
     /**
      * Method returns the domain of variable.
      *
@@ -62,7 +48,6 @@ public class CSPVariable {
         return domain;
     }
 
-
     /**
      * Method returns the domain values of variable.
      *
@@ -71,15 +56,6 @@ public class CSPVariable {
      */
     public List<Object> getDomainValues() {
         return domain.domainValues;
-    }
-
-    /**
-     * used for forward checking
-     * @param version
-     * @return domain values of this particular version
-     */
-    public CSPDomain getDomainVersion(int version) {
-        return domainVersion.get(version);
     }
 
     /**
@@ -93,27 +69,21 @@ public class CSPVariable {
         domain.assign(domainValue);
     }
 
-    public void assign(Object domainValue, int version) {
-        domainVersion.get(version).assign(domainValue);
-    }
-
     /**
      * Method restores domain values of variable from copy.
      * Used by iterative BT.
      */
-    public void restoreDomainValues() {
-        domain.restoreDomainValue();
+    public void restoreDomainValuesFrom(int version) {
+        domain.restoreDomainValuesFrom(version);
     }
 
-    public void copyDomainValues() {
-        domain.copyDomainValues();
+    public void copyDomainValuesTo(int version) {
+        domain.copyDomainValuesTo(version);
     }
 
-    public void initializeDomainValueIterator() {
-        domain.initializeDomainValuesIteratorFromCopy();
+    public void makeDomainValuesIteratorFrom(int version) {
+        domain.makeDomainValuesIteratorFrom(version);
     }
-
-
     /**
      * Method returns a preexisting iterator over variable domain's
      * domain_values_copy.
@@ -121,7 +91,6 @@ public class CSPVariable {
     public Iterator<Object> getDomainValuesIterator() {
         return domain.getDomainValuesIterator();
     }
-
 
     /**
      * Method selects a consistent value for
@@ -167,13 +136,15 @@ public class CSPVariable {
      * @return a consistent value if it exists, otherwise null
      */
     public Object selectFC(int version) {
-        Iterator domainIterator = domainVersion.get(version).getDomainValuesIterator();
+        Iterator domainIterator = getDomainValuesIterator();
         while (domainIterator.hasNext()) {
-        Object currentVal = domainIterator.next();
-        assign(currentVal, version);
-        if (consistentFC()) {
-            return currentVal;
-        } else return null;
+            Object currentVal = domainIterator.next();
+            assign(currentVal);
+            if (consistentFC(version)) {
+                return currentVal;
+            }
+        }
+        return null;
     }
 
     /**
@@ -184,14 +155,19 @@ public class CSPVariable {
      * @return true iff variable's domain values are consistent
      */
     public boolean consistentFC(int version) {
+        boolean consistent = true;
         ListIterator<CSPConstraint> fromArcIterator = fromArcs.listIterator();
-        while (fromArcIterator.hasNext()) {
+        while (fromArcIterator.hasNext()&&consistent) {
             CSPConstraint to_arc = fromArcIterator.next();
             if (!to_arc.prune(version)) {
-                return false;
+                consistent = false;
             }
         }
-        return true;
+        while (fromArcIterator.hasPrevious() && !consistent) {
+            CSPConstraint to_arc = fromArcIterator.previous();
+            to_arc.input.restoreDomainValuesFrom(version);
+        }
+        return consistent;
     }
 
     /**
@@ -206,9 +182,9 @@ public class CSPVariable {
         // Check consistency of all constraints involving this variable.
 
         // Iterate over toArcs, checking that each to_arc is consistent.
-        ListIterator<CSPConstraint> toMeIterator = toArcs.listIterator();
-        while (toMeIterator.hasNext()) {
-            CSPConstraint toArc = toMeIterator.next();
+        ListIterator<CSPConstraint> toArcIterator = toArcs.listIterator();
+        while (toArcIterator.hasNext()) {
+            CSPConstraint toArc = toArcIterator.next();
             if (!(toArc.consistent())) return false;
         }
 

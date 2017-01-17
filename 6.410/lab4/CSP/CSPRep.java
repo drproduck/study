@@ -106,28 +106,26 @@ public class CSPRep
 	  */
     public boolean backtrack()
     {
-		for (CSPVariable var :
-				variables) {
-			var.initializeDomainValueIterator();
-		}
 		int i = 0;
-		variables.get(i).copyDomainValues();
-		for (;i>-1&&i<variables.size();) {
+		variables.get(i).copyDomainValuesTo(0);
+		variables.get(i).makeDomainValuesIteratorFrom(0);
+		for (;;) {
 			if (variables.get(i).select() == null) {
-				variables.get(i).restoreDomainValues();
+				variables.get(i).restoreDomainValuesFrom(0);
 				i--;
+				if (i < 0) {
+					return false;
+				}
 			} else {
 				if (i == variables.size()-1) {
-					break;
+					return true;
 				}
 				i++;
-				variables.get(i).copyDomainValues();
+				variables.get(i).copyDomainValuesTo(0);
+				variables.get(i).makeDomainValuesIteratorFrom(0);
 			}
 		}
-		if (i == -1) {
-			return false;
-		}
-		else return true;
+
     }
 
 	 /**
@@ -152,13 +150,39 @@ public class CSPRep
     public boolean backtrack_fc()
     {
 		int i = 0;
-		initializeDomainVersions(i);
+		for (CSPVariable var :
+				variables) {
+			var.copyDomainValuesTo(i);
+		}
+		variables.get(i).makeDomainValuesIteratorFrom(i);
 		while (i > -1 && i < variables.size()) {
-			if (variables.get(i).selectFC(variables, i) == null) {
+			if (variables.get(i).selectFC(i) == null) {
 				i--;
+				if (debug_print)
+				System.out.println("stepping backward: i = "+ i);
+				if (i > -1) {
+					for (int j = i; j < variables.size(); j++) {
+						variables.get(j).restoreDomainValuesFrom(i);
+					}
+					//for (CSPVariable var :
+					//		variables) {
+					//	var.copyDomainValuesTo(i);
+					//}
+				}
 			} else {
 				i++;
-				initializeDomainVersions(i);
+				if (debug_print)
+				System.out.println("stepping forward: i = "+ i);
+				if (i < variables.size()) {
+					for (int j = i; j < variables.size(); j++) {
+						variables.get(j).copyDomainValuesTo(i);
+					}
+					//for (CSPVariable var :
+					//		variables) {
+					//	var.copyDomainValuesTo(i);
+					//}
+					variables.get(i).makeDomainValuesIteratorFrom(i);
+				}
 			}
 		}
 		if (i < 0) {
@@ -167,16 +191,6 @@ public class CSPRep
 		return true;
     }
 
-	/**
-	 * create new version at the ith level for each variable
-	 * @param i the level number
-	 */
-	public void initializeDomainVersions(int i) {
-		for (CSPVariable var :
-				variables) {
-			var.domain.initializeDomainVersions(i);
-		}
-	}
 
 	/**save initial domains to cache via copyDomainValues
 	 *

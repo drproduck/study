@@ -32,7 +32,7 @@ public class NQueensDomain extends CSPDomain {
         for (int row = 0; row < size; row++) {
             domainValues.add(new Integer(row));
         }
-
+        domainValuesVersion = new LinkedList[size];
     }
 
 }

@@ -28,8 +28,8 @@ public class CSPConstraint
 	 * 	 */
     public CSPConstraint(CSPVariable input, CSPVariable output)
     {
-	input = input;
-	output = output;
+	this.input = input;
+	this.output = output;
 	
 	// Associate constraint with its input and output
 	// variables.

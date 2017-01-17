@@ -1,20 +1,16 @@
-
+import java.util.*;
 
 /**
  * Title:        CSPDomain
  * Description:  An abstract class, denoting a finite domain
- *               of a CSP.  Define subclass to represent a 
- *               specific kind of CSP domain.
+ * of a CSP.  Define subclass to represent a
+ * specific kind of CSP domain.
  * Copyright:    Copyright (c) 2005-2007
  * Company:      MIT
+ *
  * @author Andreas Hofmann and Brian Williams
  * @version 2.0
  */
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class CSPDomain
 {
@@ -22,9 +18,12 @@ public class CSPDomain
 	 * A finite list of objects denoting the values of the domain.
 	 */
 
-    List<Object> domainValues = null;
+    List domainValues = null;
     ListIterator<Object> domainValuesIterator = null;
-	List<List> domainValuesCopy = null;
+	List<Object> domainValuesCopy = null;
+	List[] domainValuesVersion = null;
+
+    boolean debug_print = false;
 	/**
 	 * this list of domain versions is for forward checking where we have to keep track of
 	 * available values in the domains of each variables (as result of pruning and backtracking)
@@ -58,15 +57,32 @@ public class CSPDomain
    	return domainValuesIterator;
    }
 
-   public void initializeDomainValuesIteratorFromCopy() {
-	   domainValuesIterator = domainValuesCopy.get(0).listIterator();
+   public void makeDomainValuesIteratorFrom(int version) {
+       domainValuesIterator = domainValuesVersion[version].listIterator();
    }
 
-   public void copyDomainValues() {
-	   domainValuesCopy.get(0) = domainValues;
+   public void restoreDomainValuesFrom(int version) {
+       if (domainValuesVersion[version] == null) {
+           return;
+       }
+       domainValues = new LinkedList();
+       for (Object val :
+               domainValuesVersion[version]) {
+           domainValues.add(val);
+       }
    }
 
-   public void restoreDomainValue() {
-	   domainValues = domainValuesCopy;
+   public void copyDomainValuesTo(int version) {
+       domainValuesVersion[version] = new LinkedList();
+       if (debug_print)
+       System.out.printf("values stored in version %d: ", version);
+       for (Object val :
+               domainValues) {
+           domainValuesVersion[version].add(val);
+           if (debug_print)
+           System.out.print(val.toString()+" ");
+       }
+       if (debug_print)
+       System.out.println("\n");
    }
 }

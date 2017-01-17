@@ -107,30 +107,35 @@ public class NQueensConstraint extends CSPConstraint {
 		int outputCol = outputVar.col;
 		if (debug_print)
 			System.out.println("In NQueensConstraint consistent, inputCol = " + inputCol + " outputCol = " + outputCol);
-		List inputDomainValues = inputVar.getDomainVersion(version);
-		List outputDomainValues = outputVar.getDomainVersion(version);
+		List inputDomainValues = inputVar.getDomainValues();
+		List outputDomainValues = outputVar.getDomainValues();
 
 		if (debug_print)
 			System.out.println("input_values = " + inputDomainValues + " output_values = " + outputDomainValues);
 
-		ListIterator outputIterator = outputDomainValues.listIterator();
-		while (outputIterator.hasNext()) {
-			Integer outputDomainValue = (Integer) outputIterator.next();
+		ListIterator inputIterator = inputDomainValues.listIterator();
+		while (inputIterator.hasNext()) {
+			Integer inputDomainValue = (Integer) inputIterator.next();
 
-			ListIterator inputIterator = inputDomainValues.listIterator();
-			while (inputIterator.hasNext()) {
-				Integer inputDomainValue = (Integer) inputIterator.next();
+			ListIterator outputIterator = outputDomainValues.listIterator();
+			// if there exists a valid pair in the 2 domains
+			boolean consistent = false;
+			while (outputIterator.hasNext() && !consistent) {
+				Integer outputDomainValue = (Integer) outputIterator.next();
 
 				int inputRow = inputDomainValue.intValue();
 				int outputRow = outputDomainValue.intValue();
 				if (debug_print)
 					System.out.println("inputRow = " + inputRow + " outputRow = " + outputRow);
 
-				if ((inputRow == outputRow) ||
-						(Math.abs(inputCol - outputCol) == Math.abs(inputRow - outputRow))) {
+				if ((inputRow != outputRow) &&
+						(Math.abs(inputCol - outputCol) != Math.abs(inputRow - outputRow))) {
 					// The current row assignments work, return consistent.
-					inputIterator.remove();
+					consistent = true;
 				}
+			}
+			if (!consistent) {
+				inputIterator.remove();
 			}
 			if (inputDomainValues.size() == 0) {
 				return false;
