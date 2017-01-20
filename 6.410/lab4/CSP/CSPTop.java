@@ -21,7 +21,7 @@ public class CSPTop {
 	 */
     public CSPTop()
     {
-	current_csp = new NQueens(30);   // BT search gets rough after 21 queens.
+	current_csp = new NQueens(29);   // BT search gets rough after 21 queens.
 	current_csp.initialize();
     }
 

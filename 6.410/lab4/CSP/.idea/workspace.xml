@@ -24,7 +24,7 @@
       <file leaf-file-name="CSPTop.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CSPTop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
+            <state relative-caret-position="460">
               <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
               <folding />
             </state>
@@ -89,6 +89,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="NQueensDomain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NQueensDomain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CSPDomain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSPDomain.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -105,7 +115,7 @@
       <file leaf-file-name="NQueensConstraint.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NQueensConstraint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
+            <state relative-caret-position="760">
               <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
               <folding />
             </state>
@@ -855,22 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NQueensDomain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NQueensConstraint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSPConstraint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
@@ -922,6 +916,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/NQueensDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NQueensConstraint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CSPRep.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2660">
@@ -934,7 +944,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CSPTop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
+        <state relative-caret-position="460">
           <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
           <folding />
         </state>
