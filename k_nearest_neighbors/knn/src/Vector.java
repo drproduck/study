@@ -7,6 +7,7 @@ public class Vector {
     double[] co;
     int dim;
     private int value;
+    private boolean testable = false;
 
     public int getValue() {
         return value;
@@ -20,11 +21,12 @@ public class Vector {
         return co[t];
     }
 
-    public Vector(double... args) {
+    public Vector(int value, double... args) {
         dim = args.length;
         for (int i = 0; i < dim; i++) {
             co[i] = args[i];
         }
+        this.value = value;
     }
 
     public Vector(int d) {
@@ -32,8 +34,15 @@ public class Vector {
         co = new double[d];
     }
 
+    public Vector(int d, boolean b) {
+        this(d);
+        testable = b;
+    }
+
     public void fill(double i) {
-        Arrays.fill(co, i);
+        for (int j = 0; j < dim; j++) {
+            co[j] = i;
+        }
     }
 
     public void set(int i, double j) {
@@ -55,5 +64,18 @@ public class Vector {
             p += co[0] * other.co[0];
         }
         return p;
+    }
+
+    public void random(int valueFrom, int valueTo) throws Exception{
+        if (!testable) {
+            throw new UnsupportedOperationException("Not allowed to be tested");
+        }
+        else {
+            for (int i = 0; i < dim; i++) {
+                co[i] = 100 * Math.random();
+            }
+            value = valueFrom + (int) ((valueTo - valueFrom) * Math.random());
+            System.out.printf("randomize for testing: value: %d, coordinates: %s\n", value, Arrays.toString(co));
+        }
     }
 }
