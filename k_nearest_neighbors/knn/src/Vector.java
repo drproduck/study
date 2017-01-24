@@ -23,6 +23,7 @@ public class Vector {
 
     public Vector(int value, double... args) {
         dim = args.length;
+        co = new double[dim];
         for (int i = 0; i < dim; i++) {
             co[i] = args[i];
         }
@@ -32,6 +33,9 @@ public class Vector {
     public Vector(int d) {
         dim = d;
         co = new double[d];
+        for (int i = 0; i < dim; i++) {
+            co[i] = 0;
+        }
     }
 
     public Vector(int d, boolean b) {
@@ -59,11 +63,11 @@ public class Vector {
     }
 
     public double dot(Vector other) {
-        double p = 1;
+        double sum = 0;
         for (int i = 0; i < dim; i++) {
-            p += co[0] * other.co[0];
+            sum += co[i] * other.co[i];
         }
-        return p;
+        return sum;
     }
 
     public void random(int valueFrom, int valueTo) throws Exception{
@@ -72,10 +76,16 @@ public class Vector {
         }
         else {
             for (int i = 0; i < dim; i++) {
-                co[i] = 100 * Math.random();
+                co[i] = (int)(10 * Math.random());
             }
             value = valueFrom + (int) ((valueTo - valueFrom) * Math.random());
             System.out.printf("randomize for testing: value: %d, coordinates: %s\n", value, Arrays.toString(co));
         }
+    }
+
+    public static void main(String[] args) {
+        Vector v1 = new Vector(2, 4, 5, 7);
+        Vector v2 = new Vector(2, 10, 12, 11);
+        System.out.println(v1.dot(v2));
     }
 }

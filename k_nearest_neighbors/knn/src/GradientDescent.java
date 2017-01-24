@@ -1,6 +1,5 @@
 import java.util.List;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
 
 /**
  * Created by Khiem on 1/23/2017.
@@ -8,8 +7,8 @@ import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
 public class GradientDescent {
     List<Vector> samples;
     int dim;
-    static double gamma = 0.01;
-    static double margin = 0.00001;
+    static double gamma = 0.001;
+    static double margin = 0.0001;
     private boolean testable = false;
 
     public GradientDescent(List<Vector> s, int d) {
@@ -26,10 +25,11 @@ public class GradientDescent {
         final int num = 1000;
         Vector delta;
         Vector weight = new Vector(dim);
-        weight.fill(1);
-        double output;
+        weight.fill(100);
+        double output = 0;
         int count = 0;
-        do {
+        double error = Double.MAX_VALUE;
+        while (error > margin&&count < 1000000) {
             count++;
             delta = new Vector(dim);
             for (Vector v :
@@ -44,11 +44,20 @@ public class GradientDescent {
             for (int i = 0; i < dim; i++) {
                 weight.set(i, weight.get(i) + delta.get(i));
             }
-            if (testable) {
-                System.out.printf("count %d: ", count);
-            }
 
-        } while (Math.abs(error) > margin && count < 2);
+            error = error(weight);
+            if (testable)
+            System.out.printf("count %d: output = %f, error = %f\n", count, output, error);
+        }
         return weight;
+    }
+
+    private double error(Vector weight) {
+        double result = 0;
+        for (Vector v :
+                samples) {
+            result += 0.5 * Math.pow(v.dot(weight) - v.getValue(), 2);
+        }
+        return result;
     }
 }
