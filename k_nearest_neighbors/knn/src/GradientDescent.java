@@ -8,7 +8,7 @@ public class GradientDescent {
     List<Vector> samples;
     int dim;
     static double gamma = 0.001;
-    static double margin = 0.0001;
+    static double margin = 0.000001;
     private boolean testable = false;
 
     public GradientDescent(List<Vector> s, int d) {
@@ -22,10 +22,9 @@ public class GradientDescent {
     }
 
     public Vector normal() {
-        final int num = 1000;
         Vector delta;
         Vector weight = new Vector(dim);
-        weight.fill(100);
+        weight.fill(1);
         double output = 0;
         int count = 0;
         double error = Double.MAX_VALUE;
@@ -48,6 +47,31 @@ public class GradientDescent {
             error = error(weight);
             if (testable)
             System.out.printf("count %d: output = %f, error = %f\n", count, output, error);
+        }
+        return weight;
+    }
+
+    public Vector stochastic() {
+        Vector delta;
+        Vector weight = new Vector(dim);
+        weight.fill(1);
+        double output = 0;
+        int count = 0;
+        double error = Double.MAX_VALUE;
+        while (error > margin&&count < 1000000) {
+            count++;
+            for (Vector v :
+                    samples) {
+
+                output = weight.dot(v);
+                for (int i = 0; i < dim; i++) {
+                    weight.set(i, weight.get(i) + gamma * (v.getValue() - output) * v.get(i));
+                }
+            }
+
+            error = error(weight);
+            if (testable)
+                System.out.printf("count %d: output = %f, error = %f\n", count, output, error);
         }
         return weight;
     }
