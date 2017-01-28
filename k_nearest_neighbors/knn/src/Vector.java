@@ -17,7 +17,7 @@ public class Vector {
         value = v;
     }
 
-    public double get(int t) {
+    public double x(int t) {
         return co[t];
     }
 

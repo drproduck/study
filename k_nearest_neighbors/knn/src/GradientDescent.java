@@ -21,7 +21,7 @@ public class GradientDescent {
         testable = true;
     }
 
-    public Vector normal() {
+    public Vector standard() {
         Vector delta;
         Vector weight = new Vector(dim);
         weight.fill(1);
@@ -36,18 +36,45 @@ public class GradientDescent {
 
                 output = weight.dot(v);
                 for (int i = 0; i < dim; i++) {
-                    delta.set(i, delta.get(i) + gamma * (v.getValue() - output) * v.get(i));
+                    delta.set(i, delta.x(i) + gamma * (v.getValue() - output) * v.x(i));
                 }
             }
 
             for (int i = 0; i < dim; i++) {
-                weight.set(i, weight.get(i) + delta.get(i));
+                weight.set(i, weight.x(i) + delta.x(i));
             }
 
             error = error(weight);
             if (testable)
             System.out.printf("count %d: output = %f, error = %f\n", count, output, error);
         }
+        System.out.println("Number of iterations: "+count);
+        return weight;
+    }
+
+    public Vector stochastic_unchangedOutput() {
+        Vector delta;
+        Vector weight = new Vector(dim);
+        weight.fill(1);
+        double output = 0;
+        int count = 0;
+        double error = Double.MAX_VALUE;
+        while (error > margin&&count < 1000000) {
+            count++;
+            for (Vector v :
+                    samples) {
+
+                output = weight.dot(v);
+                for (int i = 0; i < dim; i++) {
+                    weight.set(i, weight.x(i) + gamma * (v.getValue() - output) * v.x(i));
+                }
+            }
+
+            error = error(weight);
+            if (testable)
+                System.out.printf("count %d: output = %f, error = %f\n", count, output, error);
+        }
+        System.out.println("Number of iterations: "+count);
         return weight;
     }
 
@@ -62,10 +89,8 @@ public class GradientDescent {
             count++;
             for (Vector v :
                     samples) {
-
-                output = weight.dot(v);
                 for (int i = 0; i < dim; i++) {
-                    weight.set(i, weight.get(i) + gamma * (v.getValue() - output) * v.get(i));
+                    weight.set(i, linearRegression(v, weight, i));
                 }
             }
 
@@ -73,7 +98,17 @@ public class GradientDescent {
             if (testable)
                 System.out.printf("count %d: output = %f, error = %f\n", count, output, error);
         }
+        System.out.println("Number of iterations: "+count);
         return weight;
+    }
+
+    private double linearRegression(Vector v, Vector w, int i) {
+        return w.x(i) + gamma * (v.getValue() - w.dot(v)) * v.x(i);
+    }
+
+    private double logisticRegression(Vector v, Vector w, int i) {
+        double h = 1 / (1 + Math.exp(-1 * w.dot(v)));
+        return w.x(i) + gamma * (v.getValue() - h) * h * (1 - h) * v.x(i);
     }
 
     private double error(Vector weight) {
