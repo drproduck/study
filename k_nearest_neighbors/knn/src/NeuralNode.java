@@ -6,11 +6,18 @@ import java.util.List;
 public class NeuralNode {
     public Vector v;
     public double value;
-    public List<Weight> forwardWeight;
-    public List<Weight> backwardWeight;
+    public List<Weight> inWeight;
+    public List<Weight> outdWeight;
     public double delta;
 
-    public NeuralNode()
+    public NeuralNode(){
 
+    }
+    public double forwardValue(){
+        for (Weight w :
+                forwa) {
+
+        }
+    }
 
 }
