@@ -1,12 +1,14 @@
 /**
  * Created by drproduck on 1/29/17.
  */
-public class OutputNode extends NeuralNode{
+public class OutputNode extends AbstractNode{
     double expectedOutput;
-    double value;
-    double delta;
-    double input;
+    public OutputNode(){}
+
+    public OutputNode(double expectedOutput) {
+        expectedOutput = expectedOutput;
+    }
     public double getDelta(){
-        return delta = input * (1 - input) * (expectedOutput - value);
+        return delta  = input * (1 - input) * (expectedOutput - value);
     }
 }

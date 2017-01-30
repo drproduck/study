@@ -4,8 +4,13 @@ import java.util.Arrays;
  * Created by Khiem on 1/19/2017.
  */
 public class Vector {
-    double[] co;
-    int dim;
+    private double[] co;
+
+    public int getDim() {
+        return dim;
+    }
+
+    private int dim;
     private int value;
     private boolean testable = false;
 
