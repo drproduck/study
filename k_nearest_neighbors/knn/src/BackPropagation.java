@@ -16,16 +16,17 @@ public class BackPropagation {
                 examples) {
             network.initializeInputNodes(ex);
             for (int i = 1; i < network.getNumberOfLayers(); i++) {
-                network.setValuesForLayer(i);
+                network.updateValuesForLayer(i);
             }
             for (AbstractNode node :
                     network.getLayer(network.getNumberOfLayers() - 1)) {
-                node.setDelta();
+                node.updateDelta();
             }
             for (int i = network.getNumberOfLayers()-1; i >= 0 ; i--) {
-                network.setDeltasForLayer(i);
+                network.updateDeltasForLayer(i);
             }
             //TODO: implement methods to set weights for each node, need gamma learning rate
+            network.updateWeights();
         }
     }
 }

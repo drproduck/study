@@ -5,17 +5,17 @@ import java.util.List;
  */
 public abstract class AbstractNode {
     protected double value;
-    private List<Weight> inWeight;
-    private List<Weight> outWeight;
+    public List<Weight> inWeight;
+    public List<Weight> outWeight;
     protected double delta;
     protected double input;
     Function f;
 
-    public double getInput(){
+    protected double updateInput(){
         return input = f.squash(value);
     }
 
-    public void setDelta(){
+    protected void updateDelta(){
         delta = input * (1 - input) * getValue();
     }
 

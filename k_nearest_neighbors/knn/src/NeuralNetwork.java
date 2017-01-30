@@ -35,7 +35,7 @@ public class NeuralNetwork {
         return net[layer];
     }
 
-    public void setValuesForLayer(int layer) {
+    public void updateValuesForLayer(int layer) {
         for (AbstractNode node :
                 net[layer]) {
             NeuralNode nnode = (NeuralNode) node;
@@ -43,10 +43,24 @@ public class NeuralNetwork {
             nnode.setValue();
         }
     }
-    public void setDeltasForLayer(int layer){
+    public void updateDeltasForLayer(int layer){
         for (AbstractNode node : net[layer]) {
             NeuralNode nnode = (NeuralNode) node;
-            nnode.setDelta();
+            nnode.updateDelta();
+        }
+    }
+
+    public void updateWeights() {
+        for (int i = 0; i < numberOfLayers-1; i++) {
+            List<AbstractNode> layer = getLayer(i);
+            for (AbstractNode node :
+                    layer) {
+                List<Weight> weights = node.outWeight;
+                for (Weight w :
+                        weights) {
+                    w.updateWeight();
+                }
+            }
         }
     }
 
