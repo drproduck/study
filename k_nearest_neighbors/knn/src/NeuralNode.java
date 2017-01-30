@@ -8,24 +8,27 @@ public class NeuralNode {
     public List<Weight> inWeight;
     public List<Weight> outWeight;
     public double delta;
+    public double input;
     Function f;
 
     public NeuralNode(){
 
     }
-    public double getValue(){
-        return value = f.squash();
+    public double getInput(){
+        return input = f.squash();
     }
 
-    public double getDelta(){
-        double derivative = value * (1 - value);
-        double sum = 0;
+    public double getValue(){
         NeuralNode outn;
+        double sum = 0;
         for (Weight outw :
                 outWeight) {
             outn = outw.outNode;
             sum += outw.weight * outn.delta;
         }
-        return delta = derivative * sum;
+        return sum;
+    }
+    public double getDelta(){
+        return input * (1 - input) * getValue();
     }
 }
