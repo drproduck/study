@@ -25,7 +25,7 @@ public class BackPropagation {
             for (int i = network.getNumberOfLayers()-1; i >= 0 ; i--) {
                 network.setDeltasForLayer(i);
             }
-            
+            //TODO: implement methods to set weights for each node, need gamma learning rate
         }
     }
 }

@@ -69,8 +69,8 @@
       <file leaf-file-name="BackPropagation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/knn/src/BackPropagation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="27" column="12" lean-forward="true" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+            <state relative-caret-position="220">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -150,10 +150,10 @@
         <option value="$PROJECT_DIR$/knn/src/Vector.java" />
         <option value="$PROJECT_DIR$/knn/src/NeuralNode.java" />
         <option value="$PROJECT_DIR$/knn/src/OutputNode.java" />
-        <option value="$PROJECT_DIR$/knn/src/BackPropagation.java" />
         <option value="$PROJECT_DIR$/knn/src/InputNode.java" />
         <option value="$PROJECT_DIR$/knn/src/AbstractNode.java" />
         <option value="$PROJECT_DIR$/knn/src/NeuralNetwork.java" />
+        <option value="$PROJECT_DIR$/knn/src/BackPropagation.java" />
       </list>
     </option>
   </component>
@@ -1024,8 +1024,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/knn/src/BackPropagation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="27" column="12" lean-forward="true" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+        <state relative-caret-position="220">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding />
         </state>
       </provider>
