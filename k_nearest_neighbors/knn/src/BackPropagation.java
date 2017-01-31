@@ -18,7 +18,7 @@ public class BackPropagation {
             for (int i = 1; i < network.getNumberOfLayers(); i++) {
                 network.updateValuesForLayer(i);
             }
-            for (AbstractNode node :
+            for (Node node :
                     network.getLayer(network.getNumberOfLayers() - 1)) {
                 node.updateDelta();
             }

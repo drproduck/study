@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * Created by Khiem on 1/26/2017.
  */
-public class NeuralNode extends AbstractNode {
+public class NeuralNode extends Node {
     protected double value;
     private List<Weight> inWeight;
     private List<Weight> outWeight;

@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * Created by drproduck on 1/29/17.
  */
-public abstract class AbstractNode {
+public abstract class Node {
     protected double value;
     public List<Weight> inWeight;
     public List<Weight> outWeight;
@@ -25,5 +25,11 @@ public abstract class AbstractNode {
 
     public double getValue() {
         return value;
+    }
+
+    public void connectsTo(Node other) {
+        Weight w = new Weight(this, other);
+        this.outWeight.add(w);
+        other.inWeight.add(w);
     }
 }

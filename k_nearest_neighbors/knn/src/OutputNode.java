@@ -1,7 +1,7 @@
 /**
  * Created by drproduck on 1/29/17.
  */
-public class OutputNode extends AbstractNode{
+public class OutputNode extends Node {
     double expectedOutput;
     public OutputNode(){}
 

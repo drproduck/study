@@ -1,7 +1,7 @@
 /**
  * Created by drproduck on 1/29/17.
  */
-public class InputNode extends AbstractNode {
+public class InputNode extends Node {
     public InputNode(){}
 
     public InputNode(double input) {

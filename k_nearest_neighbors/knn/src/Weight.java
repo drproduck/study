@@ -2,15 +2,14 @@
  * Created by Khiem on 1/26/2017.
  */
 public class Weight {
-    public NeuralNode inNode;
-    public NeuralNode outNode;
+    public Node inNode;
+    public Node outNode;
     public double weight;
     private static final double gamma = 0.005;
-    private static double error = 0.000001;
-    public Weight(NeuralNode i, NeuralNode o, double weight) {
+    public Weight(Node i, Node o) {
         inNode = i;
         outNode = o;
-        this.weight = weight;
+        this.weight = 0.5;
     }
 
     public void updateWeight() {
