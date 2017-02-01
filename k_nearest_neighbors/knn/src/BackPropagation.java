@@ -12,21 +12,23 @@ public class BackPropagation {
     }
 
     public void propagate(int error, int count) {
-        for (Vector ex :
-                examples) {
-            network.initializeInputNodes(ex);
-            for (int i = 1; i < network.getNumberOfLayers(); i++) {
-                network.updateValuesForLayer(i);
+        while (count < 10000) {
+            for (Vector ex :
+                    examples) {
+                network.initializeInputNodes(ex);
+                for (int i = 1; i < network.getNumberOfLayers(); i++) {
+                    network.updateValuesForLayer(i);
+                }
+                for (Node node :
+                        network.getLayer(network.getNumberOfLayers() - 1)) {
+                    node.updateDelta();
+                }
+                for (int i = network.getNumberOfLayers() - 1; i >= 0; i--) {
+                    network.updateDeltasForLayer(i);
+                }
+                //TODO: implement methods to set weights for each node, need gamma learning rate
+                network.updateWeights();
             }
-            for (Node node :
-                    network.getLayer(network.getNumberOfLayers() - 1)) {
-                node.updateDelta();
-            }
-            for (int i = network.getNumberOfLayers()-1; i >= 0 ; i--) {
-                network.updateDeltasForLayer(i);
-            }
-            //TODO: implement methods to set weights for each node, need gamma learning rate
-            network.updateWeights();
         }
     }
 }

@@ -11,6 +11,7 @@ public class NeuralNetwork {
     }
 
     private int numberOfLayers;
+
     public NeuralNetwork(int numLayers) {
         numberOfLayers = numLayers;
     }
