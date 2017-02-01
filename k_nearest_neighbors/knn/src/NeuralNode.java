@@ -23,7 +23,7 @@ public class NeuralNode extends Node {
         double sum = 0;
         for (Weight outw :
                 outWeight) {
-            outn = outw.outNode;
+            outn = (NeuralNode)outw.outNode;
             sum += outw.weight * outn.delta;
         }
     }
