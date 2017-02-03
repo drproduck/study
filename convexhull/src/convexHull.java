@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.Set;
 import java.util.Stack;
+import java.util.TreeSet;
 
 /**
  * Created by drproduck on 1/30/17.
@@ -8,6 +10,7 @@ public class convexHull {
     public static void main(String[] args) {
         Point[] array = {new Point(0, 2), new Point(2, 2), new Point(2, 0), new Point(0, 0), new Point(0.5, 0.5), new Point(1, 1), new Point(1.5, 1.5), new Point(1.7, 1.3)};
         System.out.println(GrahamScanWithStack(array).toString());
+        System.out.println(BruteForce(array));
     }
 
     public static Stack<Point> GrahamScanWithStack(Point[] points) {
@@ -46,6 +49,31 @@ public class convexHull {
         return st;
     }
 
+    public static Set<Point> BruteForce(Point[] points) {
+        Set<Point> set = new TreeSet<>();
+        for (int i = 0; i < points.length; i++) {
+            for (int j = i+1;j<points.length;j++) {
+                Function f = new Function(points[i], points[j]);
+                double sign = 0;
+                boolean consistent = true;
+                for (int k = 0; k < points.length; k++) {
+                    double a = f.sign(points[k]);
+                    if (sign!=0) {
+                        if (a!=0 && a != sign) {
+                            consistent = false;
+                            break;
+                        }
+                    } else sign = a;
+                }
+                if (consistent) {
+                    set.add(points[i]);
+                    set.add(points[j]);
+                }
+            }
+        }
+        return set;
+    }
+
     static double slope(Point p1, Point p2) {
         return ((p1.y - p2.y) / (p1.x - p2.x));
     }
@@ -63,7 +91,7 @@ public class convexHull {
        return  (p2.x - p1.x)*(p3.y - p1.y) - (p2.y - p1.y)*(p3.x - p1.x);
     }
 
-    static class Point {
+    static class Point implements Comparable<Point>{
         double x,y;
 
         public Point(double x, double y) {
@@ -84,6 +112,17 @@ public class convexHull {
         public String toString() {
             return "(" + x + ", " + y + ")";
         }
+
+        @Override
+        public int compareTo(Point o) {
+            if (this.x != o.x) {
+                return Double.compare(this.x, o.x);
+            } else return Double.compare(this.y, o.y);
+        }
+
+        public int hashCode() {
+            return (int) (this.x + this.y);
+        }
     }
 
     static class Function {
@@ -95,8 +134,8 @@ public class convexHull {
                 b = -(x.y - delta * x.x);
             }
 
-            public double solve(Point x) {
-                return x.y + a * x.x + b;
+            public double sign(Point x) {
+                return Math.signum(x.y + a * x.x + b);
             }
         }
 }

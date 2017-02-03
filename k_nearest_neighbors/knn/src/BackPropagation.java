@@ -1,3 +1,5 @@
+import com.sun.deploy.config.VerboseDefaultConfig;
+
 import java.util.Set;
 
 /**
@@ -5,8 +7,8 @@ import java.util.Set;
  */
 public class BackPropagation {
     private NeuralNetwork network;
-    private Set<Vector> examples;
-    public BackPropagation(NeuralNetwork net, Set<Vector> exs) {
+    private Vector[] examples;
+    public BackPropagation(NeuralNetwork net, Vector[] exs) {
         network = net;
         examples = exs;
     }
@@ -29,6 +31,14 @@ public class BackPropagation {
                 //TODO: implement methods to set weights for each node, need gamma learning rate
                 network.updateWeights();
             }
+            count++;
         }
+    }
+
+    public static void main(String[] args) {
+        NeuralNetwork nw = NeuralNetwork.makeNetWork(3, 2 , 2, 2);
+        Vector[] exs = {new Vector(1, 1, 1), new Vector(1, 1, 0), new Vector(1, 0, 0), new Vector(1, 0, 1)};
+        BackPropagation bp = new BackPropagation(nw, exs);
+
     }
 }

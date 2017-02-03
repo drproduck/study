@@ -81,14 +81,17 @@ public class NeuralNetwork {
     }
 
     public void initializeInputNodes(Vector vector) {
-        InputNode inode;
-        for (int i = 0; i < vector.getDim(); i++) {
+        InputNode inode = (InputNode) net[0].get(0);//dummy varible first, input = 1
+        inode.setInput(1);
+        for (int i = 1; i < vector.getDim(); i++) {
             inode = (InputNode) net[0].get(i);
             inode.setInput(vector.x(i));
         }
     }
 
     public void makeNodesInLayer(int layer, int numNodes){
+        if (0<=layer&&layer<=numNodes-2)
+            numNodes++; //compensate for dummy variable;
         while (numNodes > 0) {
             add(layer);
             numNodes --;
@@ -105,5 +108,9 @@ public class NeuralNetwork {
                 n1.connectsTo(n2);
             }
         }
+    }
+
+    public String toString() {
+        return String.format();
     }
 }
