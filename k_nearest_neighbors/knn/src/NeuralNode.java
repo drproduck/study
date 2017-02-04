@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class NeuralNode extends Node {
     Function f;
 
     public NeuralNode(){
-
+        f = Function.Sigmoid;
     }
     public void setInput(){
         input = f.squash(value);

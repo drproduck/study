@@ -15,4 +15,9 @@ public class Weight {
     public void updateWeight() {
         weight = weight + gamma * inNode.getValue() * outNode.getDelta();
     }
+
+    public double getWeight() {
+        return weight;
+    }
 }
+

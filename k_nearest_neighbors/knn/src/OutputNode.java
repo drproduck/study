@@ -3,7 +3,10 @@
  */
 public class OutputNode extends Node {
     double expectedOutput;
-    public OutputNode(){}
+    public OutputNode(){
+        super();
+    }
+
 
     public OutputNode(double expectedOutput) {
         expectedOutput = expectedOutput;

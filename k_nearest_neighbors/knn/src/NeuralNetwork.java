@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,10 @@ public class NeuralNetwork {
 
     public NeuralNetwork(int numLayers) {
         numberOfLayers = numLayers;
+        net  = new ArrayList[numLayers];
+        for (int i = 0; i < numLayers; i++) {
+            net[i] = new ArrayList<>();
+        }
     }
 
     public void makeCompleteNetWork(int... args) {
@@ -22,6 +27,9 @@ public class NeuralNetwork {
         }
         for (int i = 0; i < numberOfLayers - 1; i++) {
             completeConnectionsBetweenLayers(i, i + 1);
+        }
+        for (int i = 0; i < net.length-1; i++) {
+            makeWeightsBetweenLayers(i, i + 1);
         }
     }
 
@@ -98,6 +106,20 @@ public class NeuralNetwork {
             }
         }
 
+        public void makeWeightsBetweenLayers(int l1, int l2) {
+            List<Node> layer1 = getLayer(l1);
+            int n1 = layer1.size();
+            List<Node> layer2 = getLayer(l2);
+            int n2 = layer2.size();
+            for (Node node1 :
+                    layer1) {
+                for (Node node2 :
+                        layer2) {
+                    Weight w = new Weight(node1, node2);
+                }
+            }
+        }
+
     public void completeConnectionsBetweenLayers(int l1, int l2) {
         List<Node> layer1 = getLayer(l1);
         List<Node> layer2 = getLayer(l2);
@@ -109,8 +131,15 @@ public class NeuralNetwork {
             }
         }
     }
-
-    public String toString() {
-        return String.format();
+    public List<List<Double>> getWeights() {
+        List<List<Double>> list = new ArrayList<>();
+        for (int i = 1; i < net.length; i++) {
+            for (Node node :
+                    getLayer(i)) {
+                list.add(node.getWeights());
+            }
+        }
+         return list;
+        }
     }
-}
+
