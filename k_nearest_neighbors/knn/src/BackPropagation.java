@@ -1,5 +1,3 @@
-import java.util.Collection;
-
 /**
  * Created by Khiem on 1/26/2017.
  */
@@ -33,10 +31,11 @@ public class BackPropagation {
         }
     }
 
-    public static void main(String[] args) {
-        NeuralNetwork nw = NeuralNetwork.makeNetWork(3, 2 , 2, 2);
+    public static void main(String[] args) throws Exception {
+        NeuralNetwork nw = NeuralNetwork.makeCompleteNetwork(2, 2 , 2, 2);
         Vector[] exs = {new Vector(1, 1, 1), new Vector(1, 1, 0), new Vector(1, 0, 0), new Vector(1, 0, 1)};
         System.out.println(nw.getWeights());
+        System.out.println();
         BackPropagation bp = new BackPropagation(nw, exs);
         System.out.println(nw.getWeights());
     }

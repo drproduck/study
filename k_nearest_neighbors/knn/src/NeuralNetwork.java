@@ -21,25 +21,116 @@ public class NeuralNetwork {
         }
     }
 
-    public void makeCompleteNetWork(int... args) {
-        for (int i = 0; i < numberOfLayers; i++) {
-            makeNodesInLayer(i, args[i]);
-        }
-        for (int i = 0; i < numberOfLayers - 1; i++) {
-            completeConnectionsBetweenLayers(i, i + 1);
-        }
-        for (int i = 0; i < net.length-1; i++) {
-            makeWeightsBetweenLayers(i, i + 1);
-        }
-    }
-
-    public static NeuralNetwork makeNetWork(int numLayers, int... args) {
+    /**
+     * for lazy testing
+     * @param numLayers number of layers including input and output layers
+     * @param args number of nodes in each layer (excluding dummy node)
+     * @return a complete network, where 2 nodes are always connected
+     */
+    public static NeuralNetwork makeCompleteNetwork(int numLayers, int... args) throws Exception {
         NeuralNetwork nn = new NeuralNetwork(numLayers);
         nn.makeCompleteNetWork(args);
         return nn;
     }
 
-    public Node add(int layer) {
+    private void makeCompleteNetWork(int... args) throws Exception {
+        for (int i = 0; i < numberOfLayers; i++) {
+            makeNodesInLayer(i, args[i]);
+        }
+        for (int i = 0; i < numberOfLayers - 1; i++) {
+            makeWeightsBetweenLayers(i, i + 1);
+        }
+        System.out.println(net[1]);
+
+    }
+
+    /**
+     * method returns the layer specified
+     * @param layer this layer
+     * @return the specified layer
+     */
+    public List<Node> getLayer(int layer) {
+        return net[layer];
+    }
+
+    /**
+     * method updates values for this layer when forwarding
+     * @param layer this layer
+     */
+    public void updateValuesForLayer(int layer) {
+        for (Node node :
+                net[layer]) {
+            node.updateValue();
+            node.updateInput();
+        }
+    }
+
+    /**
+     * method updates delta for layer while back-propagating
+     * @param layer this layer
+     */
+    public void updateDeltasForLayer(int layer){
+        for (Node node : net[layer]) {
+            NeuralNode nnode = (NeuralNode) node;
+            nnode.updateDelta();
+        }
+    }
+
+    /**
+     * method updates weights when back-propagating
+     * update the inweight so as to include dummy nodes
+     */
+    public void updateWeights() {
+        for (int i = 1; i < numberOfLayers; i++) {
+            List<Node> layer = getLayer(i);
+            for (Node node :
+                    layer) {
+                List<Weight> weights = node.inWeight;
+                for (Weight w :
+                        weights) {
+                    w.updateWeight();
+                }
+            }
+        }
+    }
+
+    /**
+     * method initialize input according to input vector
+     * @param vector a vector in sample space
+     */
+    public void initializeInputNodes(Vector vector) {
+        InputNode inode = (InputNode) net[0].get(0);//dummy varible first, input = 1
+        inode.setInput(1);
+        for (int i = 1; i < vector.getDim(); i++) {
+            inode = (InputNode) net[0].get(i);
+            inode.setInput(vector.x(i));
+        }
+    }
+
+    /**
+     * method creates a complete layer, without connections to other layers yet
+     * will create a dummy node first if layer if NOT output layer
+     * @param layer this layer
+     * @param numNodes number of Nodes to add (exclude the dummy)
+     */
+    public void makeNodesInLayer(int layer, int numNodes){
+        if (0 <= layer && layer <= numNodes - 2) {
+            Node dummy = new DummyNode();
+            net[layer].add(dummy);
+        }
+            while (numNodes > 0) {
+                add(layer);
+                numNodes--;
+            }
+        }
+
+    /**
+     * private method to add a node to a layer
+     * note that makeNodesInLayer will make the dummy node first therefore add does not need to support adding Dummy node
+     * @param layer this specific layer in range(0, numberOfLayer)
+     * @return
+     */
+    private Node add(int layer) {
         //if layer is output layer
         Node node;
         if (layer == numberOfLayers - 1) {
@@ -55,79 +146,24 @@ public class NeuralNetwork {
         return node;
     }
 
-    public List<Node> getLayer(int layer) {
-        return net[layer];
-    }
-
-    public void updateValuesForLayer(int layer) {
-        for (Node node :
-                net[layer]) {
-            NeuralNode nnode = (NeuralNode) node;
-            nnode.setInput();
-            nnode.setValue();
-        }
-    }
-    public void updateDeltasForLayer(int layer){
-        for (Node node : net[layer]) {
-            NeuralNode nnode = (NeuralNode) node;
-            nnode.updateDelta();
-        }
-    }
-
-    public void updateWeights() {
-        for (int i = 0; i < numberOfLayers-1; i++) {
-            List<Node> layer = getLayer(i);
-            for (Node node :
-                    layer) {
-                List<Weight> weights = node.outWeight;
-                for (Weight w :
-                        weights) {
-                    w.updateWeight();
-                }
-            }
-        }
-    }
-
-    public void initializeInputNodes(Vector vector) {
-        InputNode inode = (InputNode) net[0].get(0);//dummy varible first, input = 1
-        inode.setInput(1);
-        for (int i = 1; i < vector.getDim(); i++) {
-            inode = (InputNode) net[0].get(i);
-            inode.setInput(vector.x(i));
-        }
-    }
-
-    public void makeNodesInLayer(int layer, int numNodes){
-        if (0<=layer&&layer<=numNodes-2)
-            numNodes++; //compensate for dummy variable;
-        while (numNodes > 0) {
-            add(layer);
-            numNodes --;
-            }
-        }
-
-        public void makeWeightsBetweenLayers(int l1, int l2) {
-            List<Node> layer1 = getLayer(l1);
-            int n1 = layer1.size();
-            List<Node> layer2 = getLayer(l2);
-            int n2 = layer2.size();
-            for (Node node1 :
-                    layer1) {
-                for (Node node2 :
-                        layer2) {
-                    Weight w = new Weight(node1, node2);
-                }
-            }
-        }
-
-    public void completeConnectionsBetweenLayers(int l1, int l2) {
+    /**
+     * complete every connections possible between 2 layers
+     * note output layer does not have dummy variable
+     * @param l1 from layer
+     * @param l2 to layer
+     * @throws Exception
+     */
+    public void makeWeightsBetweenLayers(int l1, int l2) throws Exception {
         List<Node> layer1 = getLayer(l1);
         List<Node> layer2 = getLayer(l2);
-        for (Node n1 :
-                layer1) {
-            for (Node n2 :
-                    layer2) {
-                n1.connectsTo(n2);
+        for (int i = 0; i < layer1.size(); i++) {
+            Node node1 = layer1.get(i);
+            int j = 1;
+            if (l2 == numberOfLayers-1) //if this layer is output layer
+                j = 0;
+            for (;j< layer2.size();j++) {
+                Node node2 = layer2.get(j);
+                node1.connectsTo(node2);
             }
         }
     }

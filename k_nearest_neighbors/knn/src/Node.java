@@ -12,9 +12,7 @@ public abstract class Node {
     protected double input;
     Function f;
     public Node() {
-        inWeight = new ArrayList<>();
-        outWeight = new ArrayList<>();
-        f = Function.Sigmoid;
+
     }
     protected double updateInput(){
         return input = f.squash(value);
@@ -28,11 +26,25 @@ public abstract class Node {
         return delta;
     }
 
-    public double getValue() {
+    public double getValue()
+    {
         return value;
     }
 
-    public void connectsTo(Node other) {
+    public void updateValue(){
+        NeuralNode outn;
+        double sum = 0;
+        for (Weight outw :
+                outWeight) {
+            outn = (NeuralNode)outw.outNode;
+            sum += outw.weight * outn.delta;
+        }
+    }
+
+    public void connectsTo(Node other) throws Exception {
+        if (other instanceof DummyNode) {
+            throw new Exception("Dummy Node doesnt have inweight");
+        }
         Weight w = new Weight(this, other);
         this.outWeight.add(w);
         other.inWeight.add(w);

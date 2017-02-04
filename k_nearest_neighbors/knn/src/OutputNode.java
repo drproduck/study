@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+
 /**
  * Created by drproduck on 1/29/17.
  */
 public class OutputNode extends Node {
     double expectedOutput;
     public OutputNode(){
-        super();
+        inWeight = new ArrayList<>();
+        f = Function.Sigmoid;
     }
 
 

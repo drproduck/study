@@ -5,27 +5,10 @@ import java.util.List;
  * Created by Khiem on 1/26/2017.
  */
 public class NeuralNode extends Node {
-    protected double value;
-    private List<Weight> inWeight;
-    private List<Weight> outWeight;
-    private double delta;
-    private double input;
-    Function f;
 
-    public NeuralNode(){
-        f = Function.Sigmoid;
-    }
-    public void setInput(){
-        input = f.squash(value);
-    }
-
-    public void setValue(){
-        NeuralNode outn;
-        double sum = 0;
-        for (Weight outw :
-                outWeight) {
-            outn = (NeuralNode)outw.outNode;
-            sum += outw.weight * outn.delta;
-        }
+    public NeuralNode() {
+        inWeight = new ArrayList<>();
+       outWeight = new ArrayList<>();
+          f = Function.Sigmoid;
     }
 }
