@@ -7,14 +7,14 @@ public class OutputNode extends Node {
     double expectedOutput;
     public OutputNode(){
         inWeight = new ArrayList<>();
-        f = Function.Sigmoid;
+        expectedOutput = 0; //have to be manually set for each input vector
     }
 
-
-    public OutputNode(double expectedOutput) {
-        expectedOutput = expectedOutput;
+    public void setExpectedOutput(double output) {
+        expectedOutput = output;
     }
-    public double getDelta(){
-        return delta  = input * (1 - input) * (expectedOutput - value);
+
+    public void updateDelta(){
+        delta  = input * (1 - input) * (expectedOutput - value);
     }
 }

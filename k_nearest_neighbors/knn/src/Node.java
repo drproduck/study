@@ -10,12 +10,13 @@ public abstract class Node {
     public List<Weight> outWeight;
     protected double delta;
     protected double input;
-    Function f;
+    private static Function f;
     public Node() {
-
+        f = Function.Sigmoid;
     }
-    protected double updateInput(){
-        return input = f.squash(value);
+    protected void updateInput(){
+        input = f.squash(value);
+        System.out.println(input);
     }
 
     protected void updateDelta(){
@@ -32,13 +33,14 @@ public abstract class Node {
     }
 
     public void updateValue(){
-        NeuralNode outn;
+        Node inNode;
         double sum = 0;
-        for (Weight outw :
-                outWeight) {
-            outn = (NeuralNode)outw.outNode;
-            sum += outw.weight * outn.delta;
+        for (Weight inw :
+                inWeight) {
+            inNode = inw.inNode;
+            sum += inw.weight * inNode.input;
         }
+        value = sum;
     }
 
     public void connectsTo(Node other) throws Exception {
@@ -53,7 +55,7 @@ public abstract class Node {
     public List<Double> getWeights() {
         List<Double> weights = new ArrayList();
         for (Weight w :
-                inWeight) {
+                outWeight) {
             weights.add(w.getWeight());
         }
         return weights;

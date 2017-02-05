@@ -14,6 +14,12 @@ public class Vector {
     private int value;
     private boolean testable = false;
 
+    public Vector getOutput() {
+        return output;
+    }
+
+    private Vector output;
+
     public int getValue() {
         return value;
     }
@@ -26,13 +32,26 @@ public class Vector {
         return co[t];
     }
 
-    public Vector(int value, double... args) {
+    public Vector(double... args) {
         dim = args.length;
         co = new double[dim];
         for (int i = 0; i < dim; i++) {
             co[i] = args[i];
         }
+    }
+
+    public Vector(int value, double args) {
+        this(args);
         this.value = value;
+    }
+
+    public Vector(Vector o, double...args) {
+        dim = args.length;
+        co = new double[dim];
+        for (int i = 0; i < dim; i++) {
+            co[i] = args[i];
+        }
+        output = o;
     }
 
     public Vector(int d) {

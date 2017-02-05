@@ -13,4 +13,6 @@ public enum Function {
             return (value < 0) ? -1 : 1;
         return 0;
     }
+
+
 }

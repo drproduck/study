@@ -40,8 +40,6 @@ public class NeuralNetwork {
         for (int i = 0; i < numberOfLayers - 1; i++) {
             makeWeightsBetweenLayers(i, i + 1);
         }
-        System.out.println(net[1]);
-
     }
 
     /**
@@ -57,11 +55,15 @@ public class NeuralNetwork {
      * method updates values for this layer when forwarding
      * @param layer this layer
      */
-    public void updateValuesForLayer(int layer) {
-        for (Node node :
-                net[layer]) {
-            node.updateValue();
-            node.updateInput();
+    public void updateValuesAndInputsForLayer(int layer) {
+        int i = 1;
+        if (layer == numberOfLayers - 1)  //output layer doesnt have dummy node
+            i = 0;
+            List<Node> lay = getLayer(layer);
+            for(;i<lay.size();i++) {
+                Node n = lay.get(i);
+            n.updateValue();
+            n.updateInput();
         }
     }
 
@@ -71,8 +73,7 @@ public class NeuralNetwork {
      */
     public void updateDeltasForLayer(int layer){
         for (Node node : net[layer]) {
-            NeuralNode nnode = (NeuralNode) node;
-            nnode.updateDelta();
+            node.updateDelta();
         }
     }
 
@@ -83,9 +84,8 @@ public class NeuralNetwork {
     public void updateWeights() {
         for (int i = 1; i < numberOfLayers; i++) {
             List<Node> layer = getLayer(i);
-            for (Node node :
-                    layer) {
-                List<Weight> weights = node.inWeight;
+            for (int j = 1; j < layer.size(); j++) {//REMEMBER TO EXCLUDE DUMMY NODE
+                List<Weight> weights = layer.get(j).inWeight;
                 for (Weight w :
                         weights) {
                     w.updateWeight();
@@ -96,14 +96,22 @@ public class NeuralNetwork {
 
     /**
      * method initialize input according to input vector
+     * note input has dummy node
      * @param vector a vector in sample space
      */
-    public void initializeInputNodes(Vector vector) {
-        InputNode inode = (InputNode) net[0].get(0);//dummy varible first, input = 1
-        inode.setInput(1);
+    public void initializeInputAndOutput(Vector vector) {
+        InputNode inode;
+        List<Node> inputLayer = net[0];
         for (int i = 1; i < vector.getDim(); i++) {
-            inode = (InputNode) net[0].get(i);
+            inode = (InputNode) inputLayer.get(i);
             inode.setInput(vector.x(i));
+        }
+        OutputNode oNode;
+        Vector output = vector.getOutput();
+        List<Node> outputLayer = net[numberOfLayers - 1];
+        for (int i = 0; i < output.getDim(); i++) {
+            oNode = (OutputNode) outputLayer.get(i);
+            oNode.setExpectedOutput(output.x(i));
         }
     }
 
@@ -114,7 +122,7 @@ public class NeuralNetwork {
      * @param numNodes number of Nodes to add (exclude the dummy)
      */
     public void makeNodesInLayer(int layer, int numNodes){
-        if (0 <= layer && layer <= numNodes - 2) {
+        if (0 <= layer && layer <= numberOfLayers-2) {
             Node dummy = new DummyNode();
             net[layer].add(dummy);
         }
@@ -136,7 +144,7 @@ public class NeuralNetwork {
         if (layer == numberOfLayers - 1) {
             node = new OutputNode();
             net[numberOfLayers - 1].add(node);
-        } else if (layer == 1) {
+        } else if (layer == 0) {
             node = new InputNode();
             net[0].add(node);
         } else {
@@ -169,7 +177,7 @@ public class NeuralNetwork {
     }
     public List<List<Double>> getWeights() {
         List<List<Double>> list = new ArrayList<>();
-        for (int i = 1; i < net.length; i++) {
+        for (int i = 0; i < numberOfLayers-1; i++) { // from input layer to layer before output layer
             for (Node node :
                     getLayer(i)) {
                 list.add(node.getWeights());

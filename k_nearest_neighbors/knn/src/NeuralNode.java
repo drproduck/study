@@ -9,6 +9,5 @@ public class NeuralNode extends Node {
     public NeuralNode() {
         inWeight = new ArrayList<>();
        outWeight = new ArrayList<>();
-          f = Function.Sigmoid;
     }
 }
