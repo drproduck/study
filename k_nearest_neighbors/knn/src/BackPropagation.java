@@ -31,15 +31,12 @@ public class BackPropagation {
     }
 
     public static void main(String[] args) throws Exception {
-        NeuralNetwork nw = NeuralNetwork.makeCompleteNetwork(3, 2, 3, 1);
-        Vector[] exs = new Vector[1000];
-        for (int i = 0; i < exs.length; i++) {
-            int a = (int)(1000 * Math.random());
-            int b = (int) (1000 * Math.random());
-            int c= a+b;
-            Vector x = new Vector(new Vector(c), a, b);
-            exs[i] = x;
-        }
+        NeuralNetwork nw = NeuralNetwork.makeCompleteNetwork(3, 2, 2, 1);
+        Vector[] exs = new Vector[4];
+        exs[0] = new Vector(new Vector(1), 0, 1);
+        exs[1] = new Vector(new Vector(1), 1, 0);
+        exs[2] = new Vector(new Vector(0), 0, 0);
+        exs[3] = new Vector(new Vector(0), 1, 1);
         System.out.println(nw.net.length);
         for (List l :
                 nw.net) {
@@ -48,7 +45,12 @@ public class BackPropagation {
         System.out.println(nw.getWeights());
         System.out.println();
         BackPropagation bp = new BackPropagation(nw, exs);
-        bp.propagate(10000);
+        bp.propagate(100);
         System.out.println(nw.getWeights());
+        System.out.println("testing");
+        System.out.println(nw.solve(new Vector(1, 0)));
+        System.out.println(nw.solve(new Vector(1, 1)));
+        System.out.println(nw.solve(new Vector(0, 0)));
+        System.out.println(nw.solve(new Vector(0, 1)));
     }
 }

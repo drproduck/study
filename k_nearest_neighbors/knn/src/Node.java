@@ -14,13 +14,24 @@ public abstract class Node {
     public Node() {
         f = Function.Sigmoid;
     }
+
+
     protected void updateInput(){
         input = f.squash(value);
-        System.out.println(input);
+    }
+
+    public double getInput() {
+        return input;
     }
 
     protected void updateDelta(){
-        delta = input * (1 - input) * getValue();
+        double sum = 0;
+        for (Weight w :
+                outWeight) {
+            Node outNode = w.outNode;
+            sum += w.weight * outNode.getDelta();
+        }
+        delta = input*(1-input)*sum;
     }
 
     public double getDelta() {
@@ -52,12 +63,8 @@ public abstract class Node {
         other.inWeight.add(w);
     }
 
-    public List<Double> getWeights() {
+    public int getWeights() {
         List<Double> weights = new ArrayList();
-        for (Weight w :
-                outWeight) {
-            weights.add(w.getWeight());
-        }
-        return weights;
+        return outWeight.size();
     }
 }

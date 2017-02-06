@@ -54,13 +54,7 @@ public class Vector {
         output = o;
     }
 
-    public Vector(int d) {
-        dim = d;
-        co = new double[d];
-        for (int i = 0; i < dim; i++) {
-            co[i] = 0;
-        }
-    }
+
 
     public Vector(int d, boolean b) {
         this(d);

@@ -6,6 +6,6 @@ import java.util.ArrayList;
 public class DummyNode extends Node {
     public DummyNode() {
         outWeight = new ArrayList<>();
-        this.value = 1;
+        this.input = 1;
     }
 }
