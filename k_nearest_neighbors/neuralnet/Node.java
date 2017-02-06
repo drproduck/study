@@ -11,7 +11,8 @@ public abstract class Node {
     protected double delta;
     protected double input;
     private static Function f;
-    public Node() {
+    public Node()
+    {
         f = Function.Sigmoid;
     }
 
@@ -32,7 +33,7 @@ public abstract class Node {
             Node outNode = w.outNode;
             sum += w.weight * outNode.getDelta();
         }
-        delta = input*(1-input)*sum;
+        delta = input *(1- input)*sum;
     }
 
     public double getDelta() {

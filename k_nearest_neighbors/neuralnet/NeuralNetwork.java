@@ -7,6 +7,16 @@ import java.util.List;
 public class NeuralNetwork {
     public List<Node>[] net;
 
+    public Vector getInputVector() {
+        return inputVector;
+    }
+
+    public void setInputVector(Vector inputVector) {
+        this.inputVector = inputVector;
+    }
+
+    public Vector inputVector;
+
     public int getNumberOfLayers() {
         return numberOfLayers;
     }
@@ -14,6 +24,7 @@ public class NeuralNetwork {
     private int numberOfLayers;
 
     public NeuralNetwork(int numLayers) {
+        inputVector = new Vector();
         numberOfLayers = numLayers;
         net  = new ArrayList[numLayers];
         for (int i = 0; i < numLayers; i++) {
@@ -52,8 +63,8 @@ public class NeuralNetwork {
     /**
      * for lazy testing
      * @param numLayers number of layers including input and output layers
-     * @param args number of nodes in each layer (excluding dummy node)
-     * @return a complete network, where 2 nodes are always connected
+     * @param args number of nodes value each layer (excluding dummy node)
+     * @return input complete network, where 2 nodes are always connected
      */
     public static NeuralNetwork makeCompleteNetwork(int numLayers, int... args) throws Exception {
         NeuralNetwork nn = new NeuralNetwork(numLayers);
@@ -84,14 +95,15 @@ public class NeuralNetwork {
      * @param layer this layer
      */
     public void updateValuesAndInputsForLayer(int layer) {
-        int i = 1;
-        if (layer == numberOfLayers - 1)  //output layer doesnt have dummy node
-            i = 0;
+        int i = (layer == numberOfLayers - 1) ? 0 : 1;
             List<Node> lay = getLayer(layer);
             for(;i<lay.size();i++) {
                 Node n = lay.get(i);
             n.updateValue();
             n.updateInput();
+                if (i == numberOfLayers - 1) {
+                    System.out.println("Error of this epoch = "+getError());
+                }
         }
     }
 
@@ -126,9 +138,10 @@ public class NeuralNetwork {
     /**
      * method initialize input according to input vector
      * note input has dummy node
-     * @param vector a vector in sample space
+     * @param vector input vector value sample space
      */
     public void initializeInputAndOutput(Vector vector) {
+        setInputVector(vector);
         InputNode inode;
         List<Node> inputLayer = net[0];
         for (int i = 1; i < inputLayer.size(); i++) {
@@ -145,8 +158,8 @@ public class NeuralNetwork {
     }
 
     /**
-     * method creates a complete layer, without connections to other layers yet
-     * will create a dummy node first if layer if NOT output layer
+     * method creates input complete layer, without connections to other layers yet
+     * will create input dummy node first if layer if NOT output layer
      * @param layer this layer
      * @param numNodes number of Nodes to add (exclude the dummy)
      */
@@ -162,9 +175,9 @@ public class NeuralNetwork {
         }
 
     /**
-     * private method to add a node to a layer
+     * private method to add input node to input layer
      * note that makeNodesInLayer will make the dummy node first therefore add does not need to support adding Dummy node
-     * @param layer this specific layer in range(0, numberOfLayer)
+     * @param layer this specific layer value range(0, numberOfLayer)
      * @return
      */
     private Node add(int layer) {
@@ -214,7 +227,8 @@ public class NeuralNetwork {
          return list;
         }
 
-    public double solve(Vector vector) {
+    public double[] solve(Vector vector) {
+        setInputVector(vector);
         InputNode inode;
         List<Node> inputLayer = net[0];
         for (int i = 1; i < inputLayer.size(); i++) {
@@ -224,7 +238,20 @@ public class NeuralNetwork {
         for (int i = 1; i < numberOfLayers; i++) {
          updateValuesAndInputsForLayer(i);
         }
-        return (net[numberOfLayers-1].get(0).input);
+        double[] a = {net[numberOfLayers - 1].get(0).input, net[numberOfLayers - 1].get(1).input};
+        return a;
+
+    }
+
+    public double getError() {
+        Vector expectedOutputVector = inputVector.getOutput();
+        double error = 0;
+        List<Node> layer = getLayer(numberOfLayers - 1);
+        for (int i = 0; i < expectedOutputVector.getDim(); i++) {
+
+            error += Math.pow(layer.get(i).getInput() - expectedOutputVector.x(i), 2);
+        }
+        return (1 / (double) expectedOutputVector.getDim()) * Math.sqrt(error);
     }
     }
 

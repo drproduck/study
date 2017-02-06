@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,6 +17,9 @@ public class BackPropagation {
         while (count < c) {
             for (Vector ex :
                     examples) {
+                System.out.println(ex.x(0));
+                System.out.println(ex.x(1));
+
                 network.initializeInputAndOutput(ex);
                 for (int i = 1; i < network.getNumberOfLayers(); i++) {
                     network.updateValuesAndInputsForLayer(i);
@@ -31,12 +35,12 @@ public class BackPropagation {
     }
 
     public static void main(String[] args) throws Exception {
-        NeuralNetwork nw = NeuralNetwork.makeCompleteNetwork(3, 2, 3, 1);
+        NeuralNetwork nw = NeuralNetwork.makeCompleteNetwork(3, 2, 2, 2);
         Vector[] exs = new Vector[4];
-        exs[0] = new Vector(new Vector(1), 0, 1);
-        exs[1] = new Vector(new Vector(1), 1, 0);
-        exs[2] = new Vector(new Vector(0), 0, 0);
-        exs[3] = new Vector(new Vector(0), 1, 1);
+        exs[0] = new Vector(new Vector(0, 1), 0, 1);
+        exs[1] = new Vector(new Vector(0, 0), 0, 0);
+        exs[2] = new Vector(new Vector(0, 1), 1, 0);
+        exs[3] = new Vector(new Vector(1, 0), 1, 1);
         System.out.println(nw.net.length);
         for (List l :
                 nw.net) {
@@ -45,12 +49,12 @@ public class BackPropagation {
         System.out.println(nw.getWeights());
         System.out.println();
         BackPropagation bp = new BackPropagation(nw, exs);
-        bp.propagate(10000);
+        bp.propagate(100000);
         System.out.println(nw.getWeights());
         System.out.println("testing");
-        System.out.println(nw.solve(new Vector(1, 0)));
-        System.out.println(nw.solve(new Vector(1, 1)));
-        System.out.println(nw.solve(new Vector(0, 0)));
-        System.out.println(nw.solve(new Vector(0, 1)));
+        System.out.println(Arrays.toString(nw.solve(new Vector(new Vector(0,1),1, 0))));
+        System.out.println(Arrays.toString(nw.solve(new Vector(new Vector(1,0),1, 1))));
+        System.out.println(Arrays.toString(nw.solve(new Vector(new Vector(0,0),0, 0))));
+        System.out.println(Arrays.toString(nw.solve(new Vector(new Vector(0,1),0, 1))));
     }
 }

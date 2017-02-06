@@ -15,6 +15,6 @@ public class OutputNode extends Node {
     }
 
     public void updateDelta(){
-        delta  = input * (1 - input) * (expectedOutput - value);
+        delta  = input * (1 - input) * (expectedOutput - input);
     }
 }
