@@ -202,24 +202,24 @@ public class NeuralNetwork {
             }
         }
     }
-    public int getWeights() {
+    public List<List<Double>> getWeights() {
         List<List<Double>> list = new ArrayList<>();
         int sum = 0;
         for (int i = 0; i < numberOfLayers-1; i++) { // from input layer to layer before output layer
             for (Node node :
                     getLayer(i)) {
-                sum += node.getWeights();
+                list.add(node.getWeights());
             }
         }
-         return sum;
+         return list;
         }
 
     public double solve(Vector vector) {
         InputNode inode;
         List<Node> inputLayer = net[0];
-        for (int i = 1; i < vector.getDim(); i++) {
+        for (int i = 1; i < inputLayer.size(); i++) {
             inode = (InputNode) inputLayer.get(i);
-            inode.setInput(vector.x(i));
+            inode.setInput(vector.x(i-1));
         }
         for (int i = 1; i < numberOfLayers; i++) {
          updateValuesAndInputsForLayer(i);

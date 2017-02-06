@@ -31,7 +31,7 @@ public class BackPropagation {
     }
 
     public static void main(String[] args) throws Exception {
-        NeuralNetwork nw = NeuralNetwork.makeCompleteNetwork(3, 2, 2, 1);
+        NeuralNetwork nw = NeuralNetwork.makeCompleteNetwork(3, 2, 3, 1);
         Vector[] exs = new Vector[4];
         exs[0] = new Vector(new Vector(1), 0, 1);
         exs[1] = new Vector(new Vector(1), 1, 0);
@@ -45,7 +45,7 @@ public class BackPropagation {
         System.out.println(nw.getWeights());
         System.out.println();
         BackPropagation bp = new BackPropagation(nw, exs);
-        bp.propagate(100);
+        bp.propagate(10000);
         System.out.println(nw.getWeights());
         System.out.println("testing");
         System.out.println(nw.solve(new Vector(1, 0)));

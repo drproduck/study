@@ -5,7 +5,7 @@ public class Weight {
     public Node inNode;
     public Node outNode;
     public double weight;
-    private static final double gamma = 0.5;
+    private static final double gamma = 3;
     public Weight(Node i, Node o) {
         inNode = i;
         outNode = o;

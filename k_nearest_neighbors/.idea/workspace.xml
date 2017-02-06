@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dc3f1d0-4258-4636-96e5-a04a9afc3576" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/knn/src/BackPropagation.java" afterPath="$PROJECT_DIR$/knn/src/BackPropagation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/knn/src/DummyNode.java" afterPath="$PROJECT_DIR$/knn/src/DummyNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/knn/src/Function.java" afterPath="$PROJECT_DIR$/knn/src/Function.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/knn/src/NeuralNetwork.java" afterPath="$PROJECT_DIR$/knn/src/NeuralNetwork.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/knn/src/Node.java" afterPath="$PROJECT_DIR$/knn/src/Node.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/knn/src/Vector.java" afterPath="$PROJECT_DIR$/knn/src/Vector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/knn/src/Weight.java" afterPath="$PROJECT_DIR$/knn/src/Weight.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/knn/src/GradientDescent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/neuralnet/src/top.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/knn.iml" afterPath="$PROJECT_DIR$/neuralnet/neuralnet.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/BackPropagation.java" afterPath="$PROJECT_DIR$/neuralnet/src/BackPropagation.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/DummyNode.java" afterPath="$PROJECT_DIR$/neuralnet/src/DummyNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/Function.java" afterPath="$PROJECT_DIR$/neuralnet/src/Function.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/InputNode.java" afterPath="$PROJECT_DIR$/neuralnet/src/InputNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/NeuralNetwork.java" afterPath="$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/NeuralNode.java" afterPath="$PROJECT_DIR$/neuralnet/src/NeuralNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/Node.java" afterPath="$PROJECT_DIR$/neuralnet/src/Node.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/OutputNode.java" afterPath="$PROJECT_DIR$/neuralnet/src/OutputNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/Vector.java" afterPath="$PROJECT_DIR$/neuralnet/src/Vector.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/knn/src/Weight.java" afterPath="$PROJECT_DIR$/neuralnet/src/Weight.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,26 +36,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/Node.java">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="480">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#399#400#0" expanded="true" />
-                <element signature="e#438#439#0" expanded="true" />
-                <element signature="e#470#471#0" expanded="true" />
-                <element signature="e#498#499#0" expanded="true" />
-                <element signature="e#811#812#0" expanded="true" />
-                <element signature="e#847#848#0" expanded="true" />
-                <element signature="e#875#876#0" expanded="true" />
+                <element signature="e#505#506#0" expanded="true" />
+                <element signature="e#533#534#0" expanded="true" />
+                <element signature="e#818#819#0" expanded="true" />
+                <element signature="e#846#847#0" expanded="true" />
+                <element signature="e#882#883#0" expanded="true" />
+                <element signature="e#910#911#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Function.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/Function.java">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/Function.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
               <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
@@ -56,30 +63,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GradientDescent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/GradientDescent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/Vector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="e#514#515#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OutputNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/OutputNode.java">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/OutputNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
               <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
@@ -91,7 +76,7 @@
         </entry>
       </file>
       <file leaf-file-name="Weight.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/Weight.java">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/Weight.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
               <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
@@ -103,34 +88,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackPropagation.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/knn/src/BackPropagation.java">
+      <file leaf-file-name="BackPropagation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/BackPropagation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="44" column="41" lean-forward="true" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+            <state relative-caret-position="0">
+              <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".NeuralNetwork.java.swp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/.NeuralNetwork.java.swp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vector.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/Vector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="InputNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/InputNode.java">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/InputNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+            <state relative-caret-position="240">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="e#292#293#0" expanded="true" />
-                <element signature="e#326#327#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="NeuralNetwork.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#188#189#0" expanded="true" />
@@ -143,10 +147,10 @@
         </entry>
       </file>
       <file leaf-file-name="DummyNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knn/src/DummyNode.java">
+        <entry file="file://$PROJECT_DIR$/neuralnet/src/DummyNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+            <state relative-caret-position="0">
+              <caret line="0" column="27" lean-forward="true" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -182,10 +186,12 @@
         <option value="$PROJECT_DIR$/knn/src/Vector.java" />
         <option value="$PROJECT_DIR$/knn/src/Function.java" />
         <option value="$PROJECT_DIR$/knn/src/DummyNode.java" />
-        <option value="$PROJECT_DIR$/knn/src/BackPropagation.java" />
+        <option value="$PROJECT_DIR$/knn/src/Weight.java" />
         <option value="$PROJECT_DIR$/knn/src/Node.java" />
         <option value="$PROJECT_DIR$/knn/src/NeuralNetwork.java" />
-        <option value="$PROJECT_DIR$/knn/src/Weight.java" />
+        <option value="$PROJECT_DIR$/knn/src/BackPropagation.java" />
+        <option value="$PROJECT_DIR$/neuralnet/src/Vector.java" />
+        <option value="$PROJECT_DIR$/neuralnet/src/BackPropagation.java" />
       </list>
     </option>
   </component>
@@ -234,7 +240,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="knn" />
+              <option name="myItemId" value="neuralnet" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -244,7 +250,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="knn" />
+              <option name="myItemId" value="neuralnet" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -318,20 +324,6 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RunManager" selected="Application.BackPropagation">
-    <configuration default="false" name="BackPropagation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="BackPropagation" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="knn" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="Function" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Function" />
       <option name="VM_PARAMETERS" />
@@ -371,6 +363,20 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="knn" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="BackPropagation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BackPropagation" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="neuralnet" />
       <envs />
       <method />
     </configuration>
@@ -593,10 +599,10 @@
       <method />
     </configuration>
     <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Application.BackPropagation" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Function" />
-      <item index="2" class="java.lang.String" itemvalue="Application.top" />
-      <item index="3" class="java.lang.String" itemvalue="Application.NeuralNetwork" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Function" />
+      <item index="1" class="java.lang.String" itemvalue="Application.top" />
+      <item index="2" class="java.lang.String" itemvalue="Application.NeuralNetwork" />
+      <item index="3" class="java.lang.String" itemvalue="Application.BackPropagation" />
     </list>
     <recent_temporary>
       <list size="4">
@@ -641,7 +647,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -694,13 +700,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/knn/src/NeuralNetwork.java</url>
-          <line>112</line>
+          <url>file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java</url>
+          <line>219</line>
           <properties />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -709,22 +715,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/knn/src/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/GradientDescent.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/GradientDescent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/Vector.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Vector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="880">
           <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
@@ -738,7 +736,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
@@ -752,21 +750,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/OutputNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/OutputNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/Function.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
@@ -781,7 +779,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
@@ -795,7 +793,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -803,7 +801,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/knn/src/LogisticFunction.java" />
-    <entry file="file://$PROJECT_DIR$/knn/src/Function.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
@@ -818,7 +816,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
@@ -832,7 +830,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
@@ -840,7 +838,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/knn/src/LogisticFunction.java" />
-    <entry file="file://$PROJECT_DIR$/knn/src/Function.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
@@ -855,7 +853,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
@@ -869,7 +867,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -883,7 +881,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
@@ -897,7 +895,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/Function.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
@@ -906,7 +904,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/knn/src/LogisticFunction.java" />
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
@@ -920,7 +918,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
@@ -934,7 +932,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -942,7 +940,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/knn/src/LogisticFunction.java" />
-    <entry file="file://$PROJECT_DIR$/knn/src/Function.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
@@ -957,7 +955,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
@@ -971,7 +969,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -988,27 +986,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/knn/src/knn.java" />
     <entry file="file://$PROJECT_DIR$/knn/src/main.java" />
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="37" lean-forward="false" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/top.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/top.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1024,15 +1012,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/DummyNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/OutputNode.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/OutputNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
@@ -1042,53 +1022,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/GradientDescent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/InputNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-          <folding>
-            <element signature="e#292#293#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#399#400#0" expanded="true" />
-            <element signature="e#438#439#0" expanded="true" />
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#498#499#0" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-            <element signature="e#847#848#0" expanded="true" />
-            <element signature="e#875#876#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#514#515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/Weight.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Weight.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
@@ -1099,10 +1033,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/NeuralNetwork.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+        <state relative-caret-position="480">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+            <element signature="e#818#819#0" expanded="true" />
+            <element signature="e#846#847#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#910#911#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/InputNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#292#293#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/NeuralNetwork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#188#189#0" expanded="true" />
@@ -1113,10 +1073,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/knn/src/BackPropagation.java">
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/GradientDescent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="44" column="41" lean-forward="true" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+        <state relative-caret-position="120">
+          <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/BackPropagation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/.NeuralNetwork.java.swp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/DummyNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="27" lean-forward="true" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralnet/src/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
           <folding />
         </state>
       </provider>

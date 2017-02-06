@@ -18,6 +18,7 @@ public abstract class Node {
 
     protected void updateInput(){
         input = f.squash(value);
+
     }
 
     public double getInput() {
@@ -63,8 +64,12 @@ public abstract class Node {
         other.inWeight.add(w);
     }
 
-    public int getWeights() {
+    public List<Double> getWeights() {
         List<Double> weights = new ArrayList();
-        return outWeight.size();
+        for (Weight w :
+                outWeight) {
+            weights.add(w.getWeight());
+        }
+        return weights;
     }
 }

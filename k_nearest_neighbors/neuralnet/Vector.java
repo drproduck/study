@@ -11,7 +11,7 @@ public class Vector {
     }
 
     private int dim;
-    private int value;
+
     private boolean testable = false;
 
     public Vector getOutput() {
@@ -19,14 +19,6 @@ public class Vector {
     }
 
     private Vector output;
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int v) {
-        value = v;
-    }
 
     public double x(int t) {
         return co[t];
@@ -38,11 +30,6 @@ public class Vector {
         for (int i = 0; i < dim; i++) {
             co[i] = args[i];
         }
-    }
-
-    public Vector(int value, double args) {
-        this(args);
-        this.value = value;
     }
 
     public Vector(Vector o, double...args) {
@@ -86,19 +73,6 @@ public class Vector {
             sum += co[i] * other.co[i];
         }
         return sum;
-    }
-
-    public void random(int valueFrom, int valueTo) throws Exception{
-        if (!testable) {
-            throw new UnsupportedOperationException("Not allowed to be tested");
-        }
-        else {
-            for (int i = 0; i < dim; i++) {
-                co[i] = (int)(10 * Math.random());
-            }
-            value = valueFrom + (int) ((valueTo - valueFrom) * Math.random());
-            System.out.printf("randomize for testing: value: %d, coordinates: %s\n", value, Arrays.toString(co));
-        }
     }
 
     public static void main(String[] args) {
