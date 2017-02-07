@@ -7,26 +7,28 @@ import java.util.Scanner;
  */
 public class Console {
     public static void main(String[] args) {
-        boolean end = false;
-        Scanner in = new Scanner(System.in);
         Console c = new Console();
-        while (!end) {
-            String s = in.nextLine();
-            if (s.equals("quit")) {
-                end = true;
-            }
-            else {
-                try {
-                    Expression exp = c.parse(s);
-                    System.out.println("-> " + exp.execute());
-                } catch (Exception e) {
-                    System.out.println("Unable to parse. Try again");
-                }
-            }
-        }
-    }
+        c.repl();
+       }
 
-    public Expression parse(String str) {
+    public void repl() {
+    boolean end = false;
+        Scanner in = new Scanner(System.in);
+         while (!end) {
+             String s = in.nextLine();
+             if (s.equals("quit")) {
+                 end = true;
+             } else {
+                 try {
+                     Expression exp = parse(s);
+                     System.out.println("-> " + exp.execute());
+                 } catch (Exception e) {
+                     System.out.println("Unable to parse. Try again");
+                 }
+             }
+         }
+    }
+    public static Expression parse(String str) {
             Scanner in = new Scanner(str).useDelimiter("\\s*\\+\\s*");
             Scanner on;
             List<Product> products = new ArrayList<>();
