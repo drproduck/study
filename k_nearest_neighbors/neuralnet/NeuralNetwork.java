@@ -101,9 +101,6 @@ public class NeuralNetwork {
                 Node n = lay.get(i);
             n.updateValue();
             n.updateInput();
-                if (i == numberOfLayers - 1) {
-                    System.out.println("Error of this epoch = "+getError());
-                }
         }
     }
 
@@ -238,9 +235,13 @@ public class NeuralNetwork {
         for (int i = 1; i < numberOfLayers; i++) {
          updateValuesAndInputsForLayer(i);
         }
-        double[] a = {net[numberOfLayers - 1].get(0).input, net[numberOfLayers - 1].get(1).input};
-        return a;
 
+        int dim = inputVector.getOutput().getDim();
+        double[] a = new double[dim];
+        for (int i = 0; i < dim; i++) {
+            a[i] = net[numberOfLayers - 1].get(i).getInput();
+        }
+        return a;
     }
 
     public double getError() {
@@ -251,7 +252,7 @@ public class NeuralNetwork {
 
             error += Math.pow(layer.get(i).getInput() - expectedOutputVector.x(i), 2);
         }
-        return (1 / (double) expectedOutputVector.getDim()) * Math.sqrt(error);
+        return Math.sqrt(error);
     }
     }
 
