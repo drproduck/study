@@ -12,6 +12,7 @@ public class Console {
        }
 
     public void repl() {
+        System.out.println("Please enter your expression: ");
     boolean end = false;
         Scanner in = new Scanner(System.in);
          while (!end) {
@@ -28,12 +29,17 @@ public class Console {
              }
          }
     }
-    public static Expression parse(String str) {
+    public static Expression parse(String str) throws Exception {
+        str = str.trim();
             Scanner in = new Scanner(str).useDelimiter("\\s*\\+\\s*");
             Scanner on;
             List<Product> products = new ArrayList<>();
             while (in.hasNext()) {
-                on = new Scanner(in.next()).useDelimiter("\\s*\\*\\s*");
+                String next = in.next();
+                if (next.equals("")) {
+                    throw new Exception();
+                }
+                on = new Scanner(next).useDelimiter("\\s*\\*\\s*");
                 List<Double> factors = new ArrayList<>();
                 while (on.hasNext()) {
                     factors.add(on.nextDouble());

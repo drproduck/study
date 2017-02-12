@@ -1,0 +1,14 @@
+Please enter your expression: 
+3 + 3 * 5
+-> 18.0
+3++3
+Unable to parse. Try again
+5**5
+Unable to parse. Try again
+4  + 5 * 6             *    7 +                  8
+-> 222.0
+erit
+Unable to parse. Try again
+quit
+
+Process finished with exit code 0

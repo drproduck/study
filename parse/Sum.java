@@ -4,7 +4,7 @@ import java.util.List;
  * Created by drproduck on 2/2/17.
  */
 public class Sum  implements Expression {
-    List<Product> products;
+    public List<Product> products;
 
     public Sum(List<Product> products) {
         this.products = products;
