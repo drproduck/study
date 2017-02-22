@@ -9,7 +9,11 @@ public class medianfind {
 	}
 
 	static private int select(int left, int right, int n) {
-		while (true) {
+        if (right - left < 5) {
+            partition5(left, right);
+            return n;
+        }
+        while (true) {
 			if (left == right) {
 				return left;
 			}
@@ -87,7 +91,7 @@ public class medianfind {
 	}
 
 	public static void main(String[] args) {
-		int i = 100001;
+		int i = 10001;
 		double[] list = new double[i];
 		while (i > 0) {
 			i--;
