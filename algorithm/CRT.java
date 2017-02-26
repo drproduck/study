@@ -9,7 +9,7 @@ public class CRT {
         for (int i = 1; i < l; i++) {
             long xi = getInverseMod(m, modulo[i]);
             long xj = getInverseMod(modulo[i], m);
-            r = xi * m * 3 + xj * modulo[i] * 2;
+            r = xi * m * remainder[i] + xj * modulo[i] * r;
             m = m * modulo[i];
             r %= m;
         }
@@ -17,8 +17,8 @@ public class CRT {
     }
 
     public static void main(String[] args) {
-        long[] a = {2,3};
-        long[] b = {5, 13};
+        long[] a = {2,3, 5};
+        long[] b = {5, 13, 17};
         System.out.println(CRT(a, b));
     }
 
