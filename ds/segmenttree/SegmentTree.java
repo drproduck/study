@@ -53,6 +53,14 @@ public class SegmentTree {
         return (a[p1] <= a[p2]) ? p1 : p2;
     }
 
+    public void update(int u) {
+
+    }
+
+    public void update(int p, int l, int r, int u) {
+        if ()
+    }
+
 
     public static void main(String[] args) {
         int[] a = {18, 17, 13, 19, 15, 11, 20};

@@ -47,7 +47,7 @@ public class BreakingStringDP {
 
     static int search_left(int f, int l, int r) {
         if (l == r) {
-            return l;
+            return cut[l];
         } else {
             int mid = (l + r) / 2;
             if (cut[mid] > f) {
@@ -64,7 +64,7 @@ public class BreakingStringDP {
 
     static int search_right(int t, int l, int r) {
         if (l == r) {
-            return l;
+            return cut[l];
         } else {
             int mid = (l + r) / 2;
             if (cut[mid] < t) {
