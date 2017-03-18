@@ -9,10 +9,16 @@ package disjoint_sets;
  * Created by Khiem on 1/14/2017.
  */
 public class RankedDisjointSets extends DisjointSets {
+    private int[] size;
+
     public RankedDisjointSets(int numElements) {
         super(numElements);
         for (int i = 0; i < numElements; i++) {
             parents[i] = -1;
+        }
+        size = new int[numElements];
+        for (int i = 0; i < numElements; i++) {
+            size[i] = 1;
         }
     }
 
@@ -24,21 +30,25 @@ public class RankedDisjointSets extends DisjointSets {
     public void union(int x, int y) {
         x = find(x);
         y = find(y);
-        if (parents[y] < parents[x]) {
-            parents[x] = y;
-        } else {
-            if (parents[x] == parents[y]) {
-                parents[x]--;
+        if (x != y) {
+            if (parents[y] < parents[x]) {
+                parents[x] = y;
+                size[y] += size[x];
+            } else {
+                if (parents[x] == parents[y]) {
+                    parents[x]--;
+                }
+                parents[y] = x;
+                size[x] += size[y];
             }
-            parents[y] = x;
         }
-
     }
 
     /**
      * path-compression: Each time 2 trees are joined, the nodes that are traversed in the smaller tree
      * will be linked to the root of the larger tree. This makes the tree less deep, allowing faster
      * access in next find. It has been shown that the amortized find is practically below 5 (though unbounded)
+     *
      * @param x
      * @return
      */
@@ -49,5 +59,9 @@ public class RankedDisjointSets extends DisjointSets {
             return parents[x] = find(parents[x]);
         }
 
+    }
+
+    public int size(int x) {
+        return size[find(x)];
     }
 }

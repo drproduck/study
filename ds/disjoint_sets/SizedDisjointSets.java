@@ -37,5 +37,8 @@ public class SizedDisjointSets extends DisjointSets {
         }
         return find(parents[x]);
     }
-    
+
+    public int size(int x) {
+        return -parents[find(x)];
+    }
 }

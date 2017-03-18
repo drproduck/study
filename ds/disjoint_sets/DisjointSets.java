@@ -30,4 +30,6 @@ abstract class DisjointSets {
     abstract void union(int x, int y);
 
     abstract int find(int x);
+
+    abstract int size(int x);
 }
